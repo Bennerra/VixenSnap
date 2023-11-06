@@ -1,1 +1,38 @@
 @import "../../_variables";
+
+.button {
+  width: 100%;
+  color: $color-white;
+  font-weight: 400;
+  padding: 9px 36px;
+  border-radius: 10px;
+  &__gray {
+    background-color: $wet-asphalt;
+    transition: background-color 0.3s ease-in-out;
+    &:hover {
+      background-color: $wet-asphalt-hover;
+    }
+  }
+  &__orange {
+    background-color: $color-orange;
+    transition: background-color 0.3s ease-in-out;
+    &:hover {
+      background-color: $color-orange-hover;
+    }
+  }
+  &__small {
+    max-width: 152px;
+    padding: 6px 21px;
+    font-size: 12px;
+  }
+  &__medium {
+    max-width: 152px;
+    padding: 11px 30px;
+    font-size: 16px;
+  }
+  &__big {
+    max-width: 637px;
+    padding: 21px 36px;
+    font-size: 34px;
+  }
+}

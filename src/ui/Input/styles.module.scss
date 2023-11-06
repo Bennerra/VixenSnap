@@ -1,0 +1,26 @@
+@import "../../_variables";
+
+.input {
+  width: 100%;
+  border-radius: 11px;
+  border: 2px solid $light-gray;
+  background: $color-white;
+  font-weight: 400;
+  color: $grey-umber;
+  padding: 6px 10px;
+  font-size: 12px;
+  //&__small {
+  //}
+  //&__medium {
+  //  padding: 17px 22px;
+  //  font-size: 17px;
+  //}
+  //&__big {
+  //  padding: 20px 27px;
+  //  font-size: 23px;
+  //}
+  @media (min-width: $mw3) {
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,62 @@
+@import "../../../../_variables";
+
+.profile-dropdown {
+  position: relative;
+  width: 200px;
+  border-radius: 11px;
+  border: 1px solid $light-gray;
+  background: $color-white;
+  padding: 23px 20px 10px 20px;
+  color: $wet-asphalt;
+  font-size: 12px;
+  font-weight: 400;
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    & > * {
+      cursor: pointer;
+      display: flex;
+      align-items: flex-start;
+      gap: 5px;
+      & svg {
+        width: 13px;
+        height: 13px;
+        object-fit: contain;
+      }
+      &:last-child {
+        margin-top: 18px;
+      }
+    }
+  }
+  &::after {
+    content: "";
+    background-color: $light-gray;
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 35px;
+    left: 0;
+  }
+  @media (min-width: $mw3) {
+    padding: 28px 25px 15px 25px;
+    font-size: 15px;
+    width: 217px;
+    &__menu {
+      gap: 21px;
+      & > * {
+        gap: 7px;
+        & svg {
+          width: 17px;
+          height: 17px;
+        }
+        &:last-child {
+          margin-top: 12px;
+        }
+      }
+    }
+    &::after {
+      bottom: 45px;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+@import "../../../../variables";
+
+.header-search {
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+  &__button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-45%);
+    right: 15px;
+    & > * {
+      width: 10px;
+      height: 10px;
+      object-fit: cover;
+    }
+  }
+  @media (min-width: $mw3) {
+    &__button {
+      right: 20px;
+      & > * {
+        width: 17px;
+        height: 17px;
+        object-fit: cover;
+      }
+    }
+  }
+}

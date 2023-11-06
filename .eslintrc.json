@@ -5,8 +5,8 @@
   },
   "extends": [
     "airbnb",
+    "airbnb/hooks",
     "airbnb-typescript",
-    "plugin:react/recommended",
     "plugin:prettier/recommended"
   ],
   "parser": "@typescript-eslint/parser",
@@ -18,7 +18,15 @@
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
-  "plugins": ["react"],
+  "plugins": ["react", "eslint-import-resolver-alias"],
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [["@", "./src"]],
+        "extensions": [".ts", ".tsx", ".js", ".json"]
+      }
+    }
+  },
   "rules": {
     "semi": 1,
     "comma-dangle": 0,

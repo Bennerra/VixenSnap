@@ -3,9 +3,9 @@ import classNames from "classnames/bind";
 
 import styles from "./styles.module.scss";
 
-import { ProfileImage } from "../../ui/ProfileImage";
-import { ReactComponent as Burger } from "../../assets/burger.svg";
-import { ReactComponent as Notifications } from "../../assets/notifications.svg";
+import { ProfileImage } from "@/ui/ProfileImage";
+import { ReactComponent as Burger } from "@/assets/burger.svg";
+import { ReactComponent as Notifications } from "@/assets/notifications.svg";
 import { ProfileDropDown } from "./Components/ProfileDropDown";
 import { ModalMenu } from "./Components/ModalMenu";
 import { ButtonsList } from "./Components/ButtonsList";

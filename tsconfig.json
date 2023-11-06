@@ -20,5 +20,7 @@
     "src",
     "typed-css.d.ts",
     "additional.d.ts"
-  ]
+  ],
+  "extends": "./tsconfig.extend.json",
+  "exclude": ["node_modules", "**/*.test.*", "build/**/*"]
 }

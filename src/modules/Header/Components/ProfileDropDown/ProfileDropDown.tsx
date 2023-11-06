@@ -3,9 +3,9 @@ import classNames from "classnames/bind";
 
 import styles from "./styles.module.scss";
 
-import { ReactComponent as Profile } from "../../../../assets/profile.svg";
-import { ReactComponent as Theme } from "../../../../assets/theme.svg";
-import { ReactComponent as Exit } from "../../../../assets/exit.svg";
+import { ReactComponent as Profile } from "@/assets/profile.svg";
+import { ReactComponent as Theme } from "@/assets/theme.svg";
+import { ReactComponent as Exit } from "@/assets/exit.svg";
 
 const cx = classNames.bind(styles);
 

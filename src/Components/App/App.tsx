@@ -1,9 +1,8 @@
 import React, { FC } from "react";
 import classNames from "classnames/bind";
 
+import { Header } from "@/modules/Header";
 import styles from "./styles.module.scss";
-
-import { Header } from "../../modules/Header";
 
 const cx = classNames.bind(styles);
 

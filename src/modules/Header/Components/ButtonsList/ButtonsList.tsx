@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 
-import { Button } from "../../../../ui/Button";
+import { Button } from "@/ui/Button";
 
 interface ButtonsListProps {
   size: "small" | "medium";

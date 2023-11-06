@@ -3,7 +3,7 @@ import classNames from "classnames/bind";
 
 import styles from "./styles.module.scss";
 
-import { ReactComponent as Close } from "../../../../assets/close.svg";
+import { ReactComponent as Close } from "@/assets/close.svg";
 
 const cx = classNames.bind(styles);
 

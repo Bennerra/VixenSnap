@@ -18,7 +18,7 @@
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
-  "plugins": ["react", "eslint-import-resolver-alias"],
+  "plugins": ["react"],
   "settings": {
     "import/resolver": {
       "alias": {

@@ -1,35 +1,30 @@
-import React, { FC, ReactComponentElement } from "react";
+import { FC, useContext } from "react";
 import classNames from "classnames/bind";
 
-import styles from "./styles.module.scss";
+import { ThemeContext } from "@/context";
 
 import { ReactComponent as Profile } from "@/assets/profile.svg";
 import { ReactComponent as Theme } from "@/assets/theme.svg";
 import { ReactComponent as Exit } from "@/assets/exit.svg";
+import { ProfileItem } from "@/modules/Header/Components/ProfileItem";
+
+import styles from "./styles.module.scss";
 
 const cx = classNames.bind(styles);
 
-interface ProfileItem {
-  img: ReactComponentElement<any>;
-  text: string;
-}
-
-const profileItems: ProfileItem[] = [
-  { img: <Profile />, text: "Личный кабинет" },
-  { img: <Theme />, text: "Сменить на тёмную тему" },
-  { img: <Exit />, text: "Выйти" },
-];
-
 const ProfileDropDown: FC = () => {
+  const { toggleTheme, theme } = useContext(ThemeContext);
+
   return (
-    <div className={cx("profile-dropdown")}>
+    <div className={cx("profile-dropdown", `profile-dropdown-${theme}`)}>
       <ul className={cx("profile-dropdown__menu")}>
-        {profileItems.map((item) => (
-          <li key={item.text} className={cx("profile-dropdown__item")}>
-            {item.img}
-            {item.text}
-          </li>
-        ))}
+        <ProfileItem text="Личный кабинет" img={<Profile />} />
+        <ProfileItem
+          text="Сменить на тёмную тему"
+          img={<Theme />}
+          onClick={toggleTheme}
+        />
+        <ProfileItem text="Выйти" img={<Exit />} />
       </ul>
     </div>
   );

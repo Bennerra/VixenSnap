@@ -6,6 +6,7 @@
   height: 100%;
   border-radius: 50%;
   border: 1px solid $wet-asphalt;
+  transition: all 0.3s ease-in-out;
   &__img {
     width: 100%;
     height: 100%;
@@ -17,5 +18,21 @@
     height: 100%;
     background-color: $light-gray;
     border-radius: 50%;
+    color: $wet-asphalt;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+    &-dark {
+      color: $grey-umber;
+    }
+  }
+  @media (min-width: $mw3) {
+    &__empty {
+      font-size: 17px;
+      font-weight: 500;
+    }
   }
 }

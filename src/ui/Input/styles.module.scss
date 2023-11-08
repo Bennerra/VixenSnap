@@ -9,16 +9,12 @@
   color: $grey-umber;
   padding: 6px 10px;
   font-size: 12px;
-  //&__small {
-  //}
-  //&__medium {
-  //  padding: 17px 22px;
-  //  font-size: 17px;
-  //}
-  //&__big {
-  //  padding: 20px 27px;
-  //  font-size: 23px;
-  //}
+  transition: all 0.3s ease-in-out;
+  &-dark {
+    border-color: $wet-asphalt;
+    background: $grey-umber;
+    color: $light-gray;
+  }
   @media (min-width: $mw3) {
     padding: 12px 15px;
     font-size: 14px;

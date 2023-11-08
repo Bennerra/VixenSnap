@@ -10,6 +10,12 @@
   color: $wet-asphalt;
   font-size: 12px;
   font-weight: 400;
+  transition: all 0.3s ease-in-out;
+  &-dark {
+    border-color: $wet-asphalt;
+    background: $grey-umber;
+    color: $color-white;
+  }
   &__menu {
     display: flex;
     flex-direction: column;

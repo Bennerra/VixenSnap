@@ -1,7 +1,7 @@
-import React, { FC, useState } from "react";
+import React, { FC, useContext, useState } from "react";
 import classNames from "classnames/bind";
 
-import styles from "./styles.module.scss";
+import { ThemeContext } from "@/context";
 
 import { ProfileImage } from "@/ui/ProfileImage";
 import { ReactComponent as Burger } from "@/assets/burger.svg";
@@ -12,11 +12,14 @@ import { ButtonsList } from "./Components/ButtonsList";
 import { HeaderLogo } from "./Components/HeaderLogo";
 import { HeaderSearch } from "./Components/HeaderSearch";
 
+import styles from "./styles.module.scss";
+
 const cx = classNames.bind(styles);
 
 const Header: FC = () => {
   const [isOpenProfile, setIsOpenProfile] = useState(false);
   const [isOpenMenu, setIsOpenMenu] = useState(false);
+  const { theme } = useContext(ThemeContext);
 
   const toggleIsOpenProfile = () => {
     setIsOpenProfile(!isOpenProfile);
@@ -27,7 +30,7 @@ const Header: FC = () => {
   };
 
   return (
-    <div className={cx("header")}>
+    <div className={cx("header", `header-${theme}`)}>
       <div className={cx("header__container", "container")}>
         <HeaderLogo />
         <HeaderSearch />

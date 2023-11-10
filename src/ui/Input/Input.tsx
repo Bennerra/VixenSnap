@@ -9,15 +9,16 @@ const cx = classNames.bind(styles);
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   placeholder: string;
+  type?: string;
 }
 
-const Input: FC<InputProps> = ({ placeholder, ...props }) => {
+const Input: FC<InputProps> = ({ placeholder, type = "text", ...props }) => {
   const { theme } = useContext(ThemeContext);
 
   return (
     <input
       className={cx("input", `input-${theme}`)}
-      type="text"
+      type={type}
       placeholder={placeholder}
       {...props}
     />

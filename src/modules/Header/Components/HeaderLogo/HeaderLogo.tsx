@@ -1,10 +1,10 @@
 import React, { FC } from "react";
 import classNames from "classnames/bind";
 
-import styles from "./styles.module.scss";
-
 import { ReactComponent as LogoDesktop } from "@/assets/logo-desktop.svg";
 import { ReactComponent as Logo } from "@/assets/logo.svg";
+
+import styles from "./styles.module.scss";
 
 const cx = classNames.bind(styles);
 

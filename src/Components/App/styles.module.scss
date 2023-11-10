@@ -4,7 +4,13 @@
   height: 100vh;
   background-color: $color-white;
   transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   &-dark {
     background-color: $grey-umber;
   }
+}
+.authorization {
+  width: 819px;
 }

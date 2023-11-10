@@ -28,36 +28,52 @@ const schema = yup
   })
   .required();
 
-const RegistrationForm: FC = React.forwardRef<HTMLFormElement, {}>((_, ref) => {
-  const { handleSubmit, register, getValues } = useForm<IRegistrationForm>({
+const RegistrationForm: FC = () => {
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm<IRegistrationForm>({
     resolver: yupResolver(schema) as any,
   });
 
-  const onSubmit: SubmitHandler<IRegistrationForm> = (data) =>
+  const onSubmit: SubmitHandler<IRegistrationForm> = (data) => {
     // eslint-disable-next-line
     console.log(data);
+  };
 
   return (
-    <form
-      ref={ref}
-      className={cx("registration-form")}
-      onSubmit={handleSubmit(onSubmit)}
-    >
-      <Input {...register("username")} placeholder="Имя пользователя *" />
-      <Input {...register("password")} placeholder="Пароль *" type="password" />
-      <Input {...register("email")} placeholder="E-mail *" type="email" />
-      <Input {...register("name")} placeholder="Имя *" />
+    <form className={cx("registration-form")} onSubmit={handleSubmit(onSubmit)}>
+      <Input
+        {...register("username")}
+        placeholder="Имя пользователя *"
+        error={errors?.username?.message}
+      />
+      <Input
+        {...register("password")}
+        placeholder="Пароль *"
+        type="password"
+        error={errors?.password?.message}
+      />
+      <Input
+        {...register("email")}
+        placeholder="E-mail *"
+        type="email"
+        error={errors?.email?.message}
+      />
+      <Input
+        {...register("name")}
+        placeholder="Имя *"
+        error={errors?.name?.message}
+      />
       <Button
+        type="submit"
         text="Зарегистрироваться"
         color="orange"
         size="big"
-        onClick={() => {
-          const values = getValues();
-          console.log(values);
-        }}
       />
     </form>
   );
-});
+};
 
 export default RegistrationForm;

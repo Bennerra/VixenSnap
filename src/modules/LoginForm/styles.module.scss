@@ -1,0 +1,12 @@
+@import "../../_variables";
+
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 21px;
+  & > * {
+    width: 100%;
+  }
+}

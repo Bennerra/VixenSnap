@@ -1,7 +1,7 @@
 import instance from "@/api/instance";
 
-export const registrationUser = async (data: {}) => {
-  await instance("/token/create/", {
+export const loginUser = async (data: {}) => {
+  await instance("/token/", {
     method: "post",
     data,
   }).catch((e) => {

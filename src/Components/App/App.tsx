@@ -4,7 +4,8 @@ import classNames from "classnames/bind";
 import { ThemeContext } from "@/context";
 
 import { Authorization } from "@/modules/Authorization";
-import { RegistrationForm } from "@/modules/RegistrationForm";
+import { LoginForm } from "@/modules/LoginForm";
+
 import styles from "./styles.module.scss";
 
 const cx = classNames.bind(styles);
@@ -20,7 +21,7 @@ const App: FC = () => {
           text="Уже зарегистрированы?"
           link="Войти"
         >
-          <RegistrationForm />
+          <LoginForm />
         </Authorization>
       </div>
     </div>

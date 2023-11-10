@@ -6,17 +6,13 @@ import * as yup from "yup";
 
 import { Input } from "@/ui/Input";
 import { Button } from "@/ui/Button";
+import { registrationUser } from "@/modules/RegistrationForm/registration";
+
+import { IRegistrationForm } from "@/modules/RegistrationForm/models/IRegistrationForm";
 
 import styles from "./styles.module.scss";
 
 const cx = classNames.bind(styles);
-
-type IRegistrationForm = {
-  username: string;
-  password: string;
-  email: string;
-  name: string;
-};
 
 const schema = yup
   .object()
@@ -37,7 +33,8 @@ const RegistrationForm: FC = () => {
     resolver: yupResolver(schema) as any,
   });
 
-  const onSubmit: SubmitHandler<IRegistrationForm> = (data) => {
+  const onSubmit: SubmitHandler<IRegistrationForm> = async (data) => {
+    await registrationUser(data);
     // eslint-disable-next-line
     console.log(data);
   };

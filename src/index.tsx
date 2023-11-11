@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
 
+import { store } from "@/store/auth";
 import { ThemeProvider } from "@/context";
 
 import App from "./Components/App/App";
@@ -12,6 +14,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <ThemeProvider>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </ThemeProvider>
 );

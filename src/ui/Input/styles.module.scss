@@ -15,6 +15,12 @@
     background: $grey-umber;
     color: $light-gray;
   }
+  &.error {
+    border-color: $color-error;
+  }
+  &.registered {
+    border-color: $color-error;
+  }
   @media (min-width: $mw3) {
     padding: 12px 15px;
     font-size: 14px;

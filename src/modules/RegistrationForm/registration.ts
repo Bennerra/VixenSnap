@@ -1,10 +1,13 @@
 import instance from "@/api/instance";
+import { fetchError } from "@/store/auth/action-creators/error";
+import { AppDispatch } from "@/store/auth";
 
-export const registrationUser = async (data: {}) => {
+export const registrationUser = async (data: {}, dispatch: AppDispatch) => {
   await instance("/token/create/", {
     method: "post",
     data,
   }).catch((e) => {
+    dispatch(fetchError("Пользователь с таким email уже зарегистрирован"));
     // eslint-disable-next-line
     console.log(e);
   });

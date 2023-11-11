@@ -1,15 +1,17 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import classNames from "classnames/bind";
 import * as yup from "yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
+import { ThemeContext } from "@/context";
+
 import { Input } from "@/ui/Input";
 import { Button } from "@/ui/Button";
 
 import { ILoginForm } from "@/modules/LoginForm/models/ILoginForm";
-
 import { loginUser } from "@/modules/LoginForm/login";
+
 import styles from "./styles.module.scss";
 
 const cx = classNames.bind(styles);
@@ -23,6 +25,8 @@ const schema = yup
   .required();
 
 const LoginForm: FC = () => {
+  const { theme } = useContext(ThemeContext);
+
   const {
     handleSubmit,
     register,
@@ -41,11 +45,13 @@ const LoginForm: FC = () => {
     <form className={cx("login-form")} onSubmit={handleSubmit(onSubmit)}>
       <Input
         {...register("login")}
+        theme={theme}
         placeholder="Логин или e-mail"
         error={errors?.login?.message}
       />
       <Input
         {...register("password")}
+        theme={theme}
         placeholder="Пароль"
         type="password"
         error={errors?.password?.message}

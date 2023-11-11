@@ -11,8 +11,6 @@ const instance = axios.create({
 });
 
 const onRequest = async (config: InternalAxiosRequestConfig) => {
-  // eslint-disable-next-line
-  console.log(config);
   if (config.url?.includes("token")) {
     return config;
   }
@@ -25,8 +23,6 @@ const onRequest = async (config: InternalAxiosRequestConfig) => {
 };
 
 const onResponse = async (response: AxiosResponse) => {
-  // eslint-disable-next-line
-  console.log(response);
   if (response.config.url?.includes("token")) {
     cookies.set("ob_", response.data.access_token);
   }

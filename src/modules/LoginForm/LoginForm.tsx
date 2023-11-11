@@ -12,7 +12,7 @@ import { Button } from "@/ui/Button";
 import { ILoginForm } from "@/modules/LoginForm/models/ILoginForm";
 import { loginUser } from "@/modules/LoginForm/login";
 
-import { useAppDispatch } from "@/hooks/redux";
+import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import styles from "./styles.module.scss";
 
 const cx = classNames.bind(styles);
@@ -35,6 +35,7 @@ const LoginForm: FC = () => {
   } = useForm<ILoginForm>({
     resolver: yupResolver(schema) as any,
   });
+  const { loginError } = useAppSelector((state) => state.error);
 
   const onSubmit: SubmitHandler<ILoginForm> = async (data) => {
     await loginUser(data, dispatch);
@@ -48,6 +49,7 @@ const LoginForm: FC = () => {
         <Input
           {...register("login")}
           theme={theme}
+          cancelled={!!loginError}
           placeholder="Логин или e-mail"
           error={errors?.login?.message}
         />
@@ -61,6 +63,7 @@ const LoginForm: FC = () => {
         <Input
           {...register("password")}
           theme={theme}
+          cancelled={!!loginError}
           placeholder="Пароль"
           type="password"
           error={errors?.password?.message}
@@ -71,6 +74,9 @@ const LoginForm: FC = () => {
           </div>
         )}
       </div>
+      {loginError && (
+        <div className={cx("login-form__error")}>{loginError}</div>
+      )}
       <Button type="submit" text="Войти" color="orange" size="big" />
     </form>
   );

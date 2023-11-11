@@ -38,8 +38,6 @@ const RegistrationForm: FC = () => {
   });
   const { registrationError } = useAppSelector((state) => state.error);
 
-  console.log(registrationError);
-
   const onSubmit: SubmitHandler<IRegistrationForm> = async (data) => {
     await registrationUser(data, dispatch);
     // eslint-disable-next-line
@@ -51,7 +49,7 @@ const RegistrationForm: FC = () => {
       <div className={cx("registration-form__input")}>
         <Input
           {...register("username")}
-          cancelled={registrationError}
+          cancelled={!!registrationError}
           theme={theme}
           placeholder="Имя пользователя *"
           error={errors?.username?.message}

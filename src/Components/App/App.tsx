@@ -6,7 +6,6 @@ import { ThemeContext } from "@/context";
 import { Authorization } from "@/modules/Authorization";
 import { LoginForm } from "@/modules/LoginForm";
 
-import { RegistrationForm } from "@/modules/RegistrationForm";
 import styles from "./styles.module.scss";
 
 const cx = classNames.bind(styles);
@@ -23,13 +22,6 @@ const App: FC = () => {
           link="Войти"
         >
           <LoginForm />
-        </Authorization>
-        <Authorization
-          title="Регистрация"
-          text="Уже зарегистрированы?"
-          link="Войти"
-        >
-          <RegistrationForm />
         </Authorization>
       </div>
     </div>

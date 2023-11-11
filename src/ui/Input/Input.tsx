@@ -9,14 +9,14 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   theme: string;
   type?: string;
   error?: string;
-  registered?: boolean;
+  cancelled?: boolean;
   ref?: Ref<HTMLInputElement>;
 }
 
 const Input: FC<InputProps> = forwardRef(
-  ({ placeholder, theme, type, error, registered, ...props }, ref) => (
+  ({ placeholder, theme, type, error, cancelled, ...props }, ref) => (
     <input
-      className={cx("input", `input-${theme}`, { error }, { registered })}
+      className={cx("input", `input-${theme}`, { error }, { cancelled })}
       ref={ref}
       placeholder={placeholder}
       type={type}

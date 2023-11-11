@@ -1,4 +1,4 @@
-import { FC, useContext } from "react";
+import React, { FC, useContext } from "react";
 import classNames from "classnames/bind";
 import * as yup from "yup";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -12,6 +12,7 @@ import { Button } from "@/ui/Button";
 import { ILoginForm } from "@/modules/LoginForm/models/ILoginForm";
 import { loginUser } from "@/modules/LoginForm/login";
 
+import { useAppDispatch } from "@/hooks/redux";
 import styles from "./styles.module.scss";
 
 const cx = classNames.bind(styles);
@@ -26,7 +27,7 @@ const schema = yup
 
 const LoginForm: FC = () => {
   const { theme } = useContext(ThemeContext);
-
+  const dispatch = useAppDispatch();
   const {
     handleSubmit,
     register,
@@ -36,26 +37,40 @@ const LoginForm: FC = () => {
   });
 
   const onSubmit: SubmitHandler<ILoginForm> = async (data) => {
-    await loginUser(data);
+    await loginUser(data, dispatch);
     // eslint-disable-next-line
     console.log(data);
   };
 
   return (
     <form className={cx("login-form")} onSubmit={handleSubmit(onSubmit)}>
-      <Input
-        {...register("login")}
-        theme={theme}
-        placeholder="Логин или e-mail"
-        error={errors?.login?.message}
-      />
-      <Input
-        {...register("password")}
-        theme={theme}
-        placeholder="Пароль"
-        type="password"
-        error={errors?.password?.message}
-      />
+      <div className={cx("login-form__input")}>
+        <Input
+          {...register("login")}
+          theme={theme}
+          placeholder="Логин или e-mail"
+          error={errors?.login?.message}
+        />
+        {errors?.login?.message && (
+          <div className={cx("login-form__error")}>
+            {errors?.login?.message}
+          </div>
+        )}
+      </div>
+      <div className={cx("login-form__input")}>
+        <Input
+          {...register("password")}
+          theme={theme}
+          placeholder="Пароль"
+          type="password"
+          error={errors?.password?.message}
+        />
+        {errors?.login?.message && (
+          <div className={cx("login-form__error")}>
+            {errors?.password?.message}
+          </div>
+        )}
+      </div>
       <Button type="submit" text="Войти" color="orange" size="big" />
     </form>
   );

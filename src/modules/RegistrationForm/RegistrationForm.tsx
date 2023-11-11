@@ -27,6 +27,7 @@ const schema = yup
   .required();
 
 const RegistrationForm: FC = () => {
+  const { theme } = useContext(ThemeContext);
   const dispatch = useAppDispatch();
   const {
     handleSubmit,
@@ -35,8 +36,9 @@ const RegistrationForm: FC = () => {
   } = useForm<IRegistrationForm>({
     resolver: yupResolver(schema) as any,
   });
-  const { theme } = useContext(ThemeContext);
-  const { error } = useAppSelector((state) => state.error);
+  const { registrationError } = useAppSelector((state) => state.error);
+
+  console.log(registrationError);
 
   const onSubmit: SubmitHandler<IRegistrationForm> = async (data) => {
     await registrationUser(data, dispatch);
@@ -49,7 +51,7 @@ const RegistrationForm: FC = () => {
       <div className={cx("registration-form__input")}>
         <Input
           {...register("username")}
-          registered={!!error}
+          cancelled={registrationError}
           theme={theme}
           placeholder="Имя пользователя *"
           error={errors?.username?.message}
@@ -63,7 +65,7 @@ const RegistrationForm: FC = () => {
       <div className={cx("registration-form__input")}>
         <Input
           {...register("password")}
-          registered={!!error}
+          cancelled={!!registrationError}
           theme={theme}
           placeholder="Пароль *"
           type="password"
@@ -78,7 +80,7 @@ const RegistrationForm: FC = () => {
       <div className={cx("registration-form__input")}>
         <Input
           {...register("email")}
-          registered={!!error}
+          cancelled={!!registrationError}
           theme={theme}
           placeholder="E-mail *"
           type="email"
@@ -93,7 +95,7 @@ const RegistrationForm: FC = () => {
       <div className={cx("registration-form__input")}>
         <Input
           {...register("name")}
-          registered={!!error}
+          cancelled={!!registrationError}
           theme={theme}
           placeholder="Имя *"
           error={errors?.name?.message}
@@ -104,7 +106,11 @@ const RegistrationForm: FC = () => {
           </div>
         )}
       </div>
-      {error && <div className={cx("registration-form__error")}>{error}</div>}
+      {registrationError && (
+        <div className={cx("registration-form__error")}>
+          {registrationError}
+        </div>
+      )}
       <Button
         type="submit"
         text="Зарегистрироваться"

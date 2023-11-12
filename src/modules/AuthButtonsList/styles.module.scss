@@ -1,0 +1,28 @@
+@import "../../_variables";
+
+.button-list {
+  &__button {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    &-desktop {
+      display: none;
+    }
+  }
+  @media (min-width: $mw2) {
+    &__button {
+      margin-bottom: 24px;
+      &-mobile {
+        display: none;
+      }
+      &-desktop {
+        display: block;
+      }
+    }
+  }
+  @media (min-width: $mw4) {
+    &__button {
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
+  }
+}

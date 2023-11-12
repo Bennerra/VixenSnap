@@ -42,7 +42,6 @@ const Authorization: FC<PropsWithChildren<AuthorizationProps>> = ({
         </div>
       </a>
       <div className={cx("authorization__fields")}>{children}</div>
-      <div className={cx("authorization__button")} />
       <div className={cx("authorization__link", "form-link")}>
         <div className={cx("form-link__title")}>{text}</div>
         <div className={cx("form-link__text")}>{link}</div>

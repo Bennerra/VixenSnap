@@ -21,7 +21,7 @@
   &.cancelled {
     border-color: $color-error;
   }
-  @media (min-width: $mw3) {
+  @media (min-width: $mw2) {
     padding: 12px 15px;
     font-size: 14px;
   }

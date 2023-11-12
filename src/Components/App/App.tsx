@@ -3,8 +3,7 @@ import classNames from "classnames/bind";
 
 import { ThemeContext } from "@/context";
 
-import { Authorization } from "@/modules/Authorization";
-import { LoginForm } from "@/modules/LoginForm";
+import { Registration } from "@/pages/Registration";
 
 import styles from "./styles.module.scss";
 
@@ -15,15 +14,7 @@ const App: FC = () => {
 
   return (
     <div className={cx("App", `App-${theme}`)}>
-      <div className={cx("authorization")}>
-        <Authorization
-          title="Регистрация"
-          text="Уже зарегистрированы?"
-          link="Войти"
-        >
-          <LoginForm />
-        </Authorization>
-      </div>
+      <Registration />
     </div>
   );
 };

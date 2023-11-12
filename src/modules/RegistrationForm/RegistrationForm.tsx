@@ -40,8 +40,6 @@ const RegistrationForm: FC = () => {
 
   const onSubmit: SubmitHandler<IRegistrationForm> = async (data) => {
     await registrationUser(data, dispatch);
-    // eslint-disable-next-line
-		console.log(data);
   };
 
   return (
@@ -109,12 +107,32 @@ const RegistrationForm: FC = () => {
           {registrationError}
         </div>
       )}
-      <Button
-        type="submit"
-        text="Зарегистрироваться"
-        color="orange"
-        size="big"
-      />
+      <div
+        className={cx(
+          "registration-form__button",
+          "registration-form__button-mobile"
+        )}
+      >
+        <Button
+          type="submit"
+          text="Зарегистрироваться"
+          color="orange"
+          size="medium"
+        />
+      </div>
+      <div
+        className={cx(
+          "registration-form__button",
+          "registration-form__button-desktop"
+        )}
+      >
+        <Button
+          type="submit"
+          text="Зарегистрироваться"
+          color="orange"
+          size="big"
+        />
+      </div>
     </form>
   );
 };

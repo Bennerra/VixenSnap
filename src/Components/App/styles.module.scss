@@ -1,7 +1,6 @@
 @import "../../_variables";
 
 .App {
-  height: 100vh;
   background-color: $color-white;
   transition: all 0.3s ease-in-out;
   display: flex;
@@ -10,7 +9,4 @@
   &-dark {
     background-color: $grey-umber;
   }
-}
-.authorization {
-  width: 819px;
 }

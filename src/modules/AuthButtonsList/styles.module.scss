@@ -4,7 +4,11 @@
   &__button {
     margin-top: 10px;
     margin-bottom: 15px;
+    &-mobile {
+      min-width: 250px;
+    }
     &-desktop {
+      min-width: 350px;
       display: none;
     }
   }

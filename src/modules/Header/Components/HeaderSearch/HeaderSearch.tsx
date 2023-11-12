@@ -3,7 +3,6 @@ import classNames from "classnames/bind";
 
 import { ThemeContext } from "@/context";
 
-import { Input } from "@/ui/Input";
 import { ReactComponent as SearchButton } from "@/assets/search-button.svg";
 
 import styles from "./styles.module.scss";
@@ -15,7 +14,10 @@ const HeaderSearch: FC = () => {
 
   return (
     <div className={cx("header__search", "header-search")}>
-      <Input theme={theme} placeholder="Поиск..." />
+      <input
+        className={cx("header-search__input", `header-search__input-${theme}`)}
+        placeholder="Поиск..."
+      />
       <div className={cx("header-search__button")}>
         <SearchButton />
       </div>

@@ -1,9 +1,11 @@
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, useContext } from "react";
 import classNames from "classnames/bind";
+import { Link } from "react-router-dom";
+
+import { ThemeContext } from "@/context";
 
 import { ReactComponent as Logo } from "@/assets/logo-desktop.svg";
 
-import { Link } from "react-router-dom";
 import styles from "./styles.module.scss";
 
 const cx = classNames.bind(styles);
@@ -13,13 +15,18 @@ interface AuthorizationLayoutProps {
 }
 
 const AuthorizationLayout: FC<AuthorizationLayoutProps> = ({ children }) => {
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <main className={cx("authorization-layout")}>
+    <main
+      className={cx("authorization-layout", `authorization-layout-${theme}`)}
+    >
       <div className={cx("authorization-layout__container")}>
         <div
           className={cx(
             "authorization-layout__top",
-            "authorization-layout-top"
+            "authorization-layout-top",
+            `authorization-layout__top-${theme}`
           )}
         >
           <Link to="/">
@@ -27,7 +34,12 @@ const AuthorizationLayout: FC<AuthorizationLayoutProps> = ({ children }) => {
               <Logo />
             </div>
           </Link>
-          <div className={cx("authorization-layout-top__bg")} />
+          <div
+            className={cx(
+              "authorization-layout-top__bg",
+              `authorization-layout-top__bg-${theme}`
+            )}
+          />
         </div>
         {children}
       </div>

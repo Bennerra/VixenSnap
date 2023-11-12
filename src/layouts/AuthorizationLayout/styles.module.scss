@@ -3,21 +3,31 @@
 @import "../../_variables";
 
 .authorization-layout {
+  background-color: $color-white;
   position: relative;
   width: 100%;
-  margin-bottom: 50px;
+  min-height: 100vh;
+  transition: all 0.3s ease-in-out;
+  &-dark {
+    background-color: $grey-umber;
+  }
   &__container {
     margin: 0 auto;
     width: 90%;
   }
   &__top {
+    padding: 10px 0;
+    transition: all 0.3s ease-in-out;
     & > * {
       color: $grey-umber;
     }
-    padding: 10px 0;
+    &-dark {
+      & > * {
+        color: $light-gray;
+      }
+    }
   }
   @media (min-width: $mw2) {
-    margin-bottom: 70px;
     &__top {
       padding: 20px 0;
     }
@@ -38,6 +48,10 @@
     height: 40%;
     min-height: 200px;
     background: linear-gradient(180deg, $color-bg-auth 0%, rgba(238, 188, 167, 0.00) 81.71%);
+    transition: all 0.3s ease-in-out;
+    &-dark {
+      background: linear-gradient(180deg, #6D422F 0%, #2C2C2C 81.71%);
+    }
   }
   &__logo {
     cursor: pointer;

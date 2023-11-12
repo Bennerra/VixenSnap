@@ -1,6 +1,8 @@
-import { FC, PropsWithChildren } from "react";
+import { FC, PropsWithChildren, useContext } from "react";
 import classNames from "classnames/bind";
 import { Link } from "react-router-dom";
+
+import { ThemeContext } from "@/context";
 
 import { ReactComponent as VK } from "@/assets/vk.svg";
 
@@ -24,18 +26,29 @@ const Authorization: FC<PropsWithChildren<AuthorizationProps>> = ({
   text,
   children,
 }) => {
+  const { theme } = useContext(ThemeContext);
   const url = window.location.hash;
   const regex = /access_token=([a-z0-9.A-Z_\-\]?@';:]+)/;
   const token = regex.exec(url);
   // eslint-disable-next-line
   console.log(token);
   return (
-    <div className={cx("authorization")}>
-      <h1 className={cx("authorization__title")}>{title}</h1>
+    <div className={cx("authorization", `authorization-${theme}`)}>
+      <h1
+        className={cx("authorization__title", `authorization__title-${theme}`)}
+      >
+        {title}
+      </h1>
       <a
         href={`${oauthUrl}?client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}`}
       >
-        <div className={cx("authorization__vk", "authorization-vk")}>
+        <div
+          className={cx(
+            "authorization__vk",
+            "authorization-vk",
+            `authorization-vk-${theme}`
+          )}
+        >
           <div className={cx("authorization-vk__text")}>Войти с помощью</div>
           <div className={cx("authorization-vk__img")}>
             <VK />
@@ -43,10 +56,14 @@ const Authorization: FC<PropsWithChildren<AuthorizationProps>> = ({
         </div>
       </a>
       <div className={cx("authorization__fields")}>{children}</div>
-      <div className={cx("authorization__link", "form-link")}>
+      <div
+        className={cx("authorization__link", "form-link", `form-link-${theme}`)}
+      >
         <div className={cx("form-link__title")}>{text}</div>
         <Link to={link === "Зарегистрироваться" ? "/registration" : "/login"}>
-          <div className={cx("form-link__text")}>{link}</div>
+          <div className={cx("form-link__text", `form-link__text-${theme}`)}>
+            {link}
+          </div>
         </Link>
       </div>
     </div>

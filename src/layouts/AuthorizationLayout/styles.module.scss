@@ -4,7 +4,6 @@
 
 .authorization-layout {
   position: relative;
-  color: $grey-umber;
   width: 100%;
   margin-bottom: 50px;
   &__container {
@@ -12,6 +11,9 @@
     width: 90%;
   }
   &__top {
+    & > * {
+      color: $grey-umber;
+    }
     padding: 10px 0;
   }
   @media (min-width: $mw2) {

@@ -1,5 +1,6 @@
 import { FC, PropsWithChildren } from "react";
 import classNames from "classnames/bind";
+import { Link } from "react-router-dom";
 
 import { ReactComponent as VK } from "@/assets/vk.svg";
 
@@ -10,7 +11,7 @@ const cx = classNames.bind(styles);
 interface AuthorizationProps {
   title: string;
   text: string;
-  link: string;
+  link: "Зарегистрироваться" | "Войти";
 }
 
 const oauthUrl = process.env.REACT_APP_OAUTH_URL;
@@ -44,7 +45,9 @@ const Authorization: FC<PropsWithChildren<AuthorizationProps>> = ({
       <div className={cx("authorization__fields")}>{children}</div>
       <div className={cx("authorization__link", "form-link")}>
         <div className={cx("form-link__title")}>{text}</div>
-        <div className={cx("form-link__text")}>{link}</div>
+        <Link to={link === "Зарегистрироваться" ? "/registration" : "/login"}>
+          <div className={cx("form-link__text")}>{link}</div>
+        </Link>
       </div>
     </div>
   );

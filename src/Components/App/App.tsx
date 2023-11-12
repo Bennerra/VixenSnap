@@ -1,9 +1,12 @@
 import { FC, useContext } from "react";
 import classNames from "classnames/bind";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import { ThemeContext } from "@/context";
 
+import { Home } from "@/pages/Home";
 import { Registration } from "@/pages/Registration";
+import { Login } from "@/pages/Login";
 
 import styles from "./styles.module.scss";
 
@@ -14,7 +17,13 @@ const App: FC = () => {
 
   return (
     <div className={cx("App", `App-${theme}`)}>
-      <Registration />
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/registration" element={<Registration />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </Router>
     </div>
   );
 };

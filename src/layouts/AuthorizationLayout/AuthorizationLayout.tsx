@@ -3,6 +3,7 @@ import classNames from "classnames/bind";
 
 import { ReactComponent as Logo } from "@/assets/logo-desktop.svg";
 
+import { Link } from "react-router-dom";
 import styles from "./styles.module.scss";
 
 const cx = classNames.bind(styles);
@@ -21,9 +22,11 @@ const AuthorizationLayout: FC<AuthorizationLayoutProps> = ({ children }) => {
             "authorization-layout-top"
           )}
         >
-          <div className={cx("authorization-layout-top__logo")}>
-            <Logo />
-          </div>
+          <Link to="/">
+            <div className={cx("authorization-layout-top__logo")}>
+              <Logo />
+            </div>
+          </Link>
           <div className={cx("authorization-layout-top__bg")} />
         </div>
         {children}

@@ -20,7 +20,11 @@ const ProfileDropDown: FC = () => {
       <ul className={cx("profile-dropdown__menu")}>
         <ProfileItem text="Личный кабинет" img={<Profile />} />
         <ProfileItem
-          text="Сменить на тёмную тему"
+          text={
+            theme === "light"
+              ? "Сменить на тёмную тему"
+              : "Сменить на светлую тему"
+          }
           img={<Theme />}
           onClick={toggleTheme}
         />

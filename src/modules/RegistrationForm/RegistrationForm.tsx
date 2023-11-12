@@ -5,13 +5,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import { Input } from "@/ui/Input";
-import { Button } from "@/ui/Button";
 import { registrationUser } from "@/modules/RegistrationForm/registration";
 
 import { IRegistrationForm } from "@/modules/RegistrationForm/models/IRegistrationForm";
 
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { ThemeContext } from "@/context";
+import { AuthButtonsList } from "@/modules/AuthButtonsList";
+
 import styles from "./styles.module.scss";
 
 const cx = classNames.bind(styles);
@@ -107,32 +108,7 @@ const RegistrationForm: FC = () => {
           {registrationError}
         </div>
       )}
-      <div
-        className={cx(
-          "registration-form__button",
-          "registration-form__button-mobile"
-        )}
-      >
-        <Button
-          type="submit"
-          text="Зарегистрироваться"
-          color="orange"
-          size="medium"
-        />
-      </div>
-      <div
-        className={cx(
-          "registration-form__button",
-          "registration-form__button-desktop"
-        )}
-      >
-        <Button
-          type="submit"
-          text="Зарегистрироваться"
-          color="orange"
-          size="big"
-        />
-      </div>
+      <AuthButtonsList text="Зарегистрироваться" />
     </form>
   );
 };

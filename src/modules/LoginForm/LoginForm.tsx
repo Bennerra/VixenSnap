@@ -7,12 +7,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { ThemeContext } from "@/context";
 
 import { Input } from "@/ui/Input";
-import { Button } from "@/ui/Button";
 
 import { ILoginForm } from "@/modules/LoginForm/models/ILoginForm";
 import { loginUser } from "@/modules/LoginForm/login";
+import { AuthButtonsList } from "@/modules/AuthButtonsList";
 
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
+
 import styles from "./styles.module.scss";
 
 const cx = classNames.bind(styles);
@@ -39,8 +40,6 @@ const LoginForm: FC = () => {
 
   const onSubmit: SubmitHandler<ILoginForm> = async (data) => {
     await loginUser(data, dispatch);
-    // eslint-disable-next-line
-    console.log(data);
   };
 
   return (
@@ -77,7 +76,7 @@ const LoginForm: FC = () => {
       {loginError && (
         <div className={cx("login-form__error")}>{loginError}</div>
       )}
-      <Button type="submit" text="Войти" color="orange" size="big" />
+      <AuthButtonsList text="Войти" />
     </form>
   );
 };

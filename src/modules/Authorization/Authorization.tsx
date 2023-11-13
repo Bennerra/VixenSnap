@@ -29,9 +29,9 @@ const Authorization: FC<PropsWithChildren<AuthorizationProps>> = ({
   const { theme } = useContext(ThemeContext);
   const url = window.location.hash;
   const regex = /access_token=([a-z0-9.A-Z_\-\]?@';:]+)/;
-  const token = regex.exec(url);
   // eslint-disable-next-line
-  console.log(token);
+  const token = regex.exec(url);
+
   return (
     <div className={cx("authorization", `authorization-${theme}`)}>
       <h1

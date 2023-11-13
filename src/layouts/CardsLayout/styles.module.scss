@@ -1,0 +1,13 @@
+@import "../../_variables";
+
+.cards-list {
+  padding-top: 30px;
+  columns: 2;
+  gap: 10px;
+  @media (min-width: $mw1) {
+    columns: 4;
+  }
+  @media (min-width: $mw4) {
+    columns: 5;
+  }
+}

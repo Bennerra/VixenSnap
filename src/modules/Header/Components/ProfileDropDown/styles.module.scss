@@ -1,6 +1,7 @@
 @import "../../../../_variables";
 
 .profile-dropdown {
+  z-index: 5;
   position: relative;
   width: 200px;
   border-radius: 11px;

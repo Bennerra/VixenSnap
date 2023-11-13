@@ -1,6 +1,6 @@
 import instance from "@/api/instance";
-import { AppDispatch } from "@/store/auth";
-import { fetchLoginError } from "@/store/auth/action-creators/error";
+import { AppDispatch } from "@/store";
+import { fetchLoginError } from "@/store/action-creators/error";
 
 export const loginUser = async (data: {}, dispatch: AppDispatch) => {
   await instance("/token/", {

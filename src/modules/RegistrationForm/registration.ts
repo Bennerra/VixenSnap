@@ -1,6 +1,6 @@
 import instance from "@/api/instance";
-import { fetchRegistrationError } from "@/store/auth/action-creators/error";
-import { AppDispatch } from "@/store/auth";
+import { fetchRegistrationError } from "@/store/action-creators/error";
+import { AppDispatch } from "@/store";
 
 export const registrationUser = async (data: {}, dispatch: AppDispatch) => {
   await instance("/token/create/", {

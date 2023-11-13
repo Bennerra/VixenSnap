@@ -1,8 +1,4 @@
-import {
-  ErrorAction,
-  ErrorActionTypes,
-  ErrorState,
-} from "@/store/auth/types/error";
+import { ErrorAction, ErrorActionTypes, ErrorState } from "@/store/types/error";
 
 const initialState: ErrorState = {
   registrationError: "",

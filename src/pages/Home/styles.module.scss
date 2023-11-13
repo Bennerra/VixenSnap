@@ -2,8 +2,4 @@
 
 .home {
   min-height: 100vh;
-  &__container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-  }
 }

@@ -1,5 +1,6 @@
 import React, { FC, useContext, useState } from "react";
 import classNames from "classnames/bind";
+import { Link } from "react-router-dom";
 
 import { ThemeContext } from "@/context";
 
@@ -31,8 +32,16 @@ const Header: FC = () => {
 
   return (
     <div className={cx("header", `header-${theme}`)}>
-      <div className={cx("header__container", "container")}>
-        <HeaderLogo />
+      <div
+        className={cx(
+          "header__container",
+          "container",
+          `header__container-${theme}`
+        )}
+      >
+        <Link to="/">
+          <HeaderLogo />
+        </Link>
         <HeaderSearch />
         <div className={cx("header__buttons")}>
           <ButtonsList size="small" />

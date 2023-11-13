@@ -44,5 +44,15 @@
   gap: 25px;
   & > * {
     cursor: pointer;
+    & > * {
+      color: $color-white;
+    }
+  }
+  &-dark {
+    & > * {
+      & > * {
+        color: $light-gray;
+      }
+    }
   }
 }

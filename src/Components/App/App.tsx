@@ -7,6 +7,7 @@ import { ThemeContext } from "@/context";
 import { Home } from "@/pages/Home";
 import { Registration } from "@/pages/Registration";
 import { Login } from "@/pages/Login";
+import { CreationCard } from "@/pages/CreationCard";
 
 import styles from "./styles.module.scss";
 
@@ -20,6 +21,7 @@ const App: FC = () => {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/creation" element={<CreationCard />} />
           <Route path="/registration" element={<Registration />} />
           <Route path="/login" element={<Login />} />
         </Routes>

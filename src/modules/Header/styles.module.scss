@@ -9,12 +9,20 @@
   &-dark {
     color: $light-gray;
     background: $grey-umber;
-    box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.33);
+    box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.33);
   }
   &__container {
     display: flex;
     align-items: center;
     gap: 10px;
+    & > * {
+      color: $wet-asphalt;
+    }
+    &-dark {
+      & > * {
+        color: $light-gray;
+      }
+    }
   }
   &__information {
     display: flex;

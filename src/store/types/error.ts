@@ -3,12 +3,12 @@ export enum ErrorActionTypes {
   FETCH_LOGIN_ERROR = "FETCH_LOGIN_ERROR",
 }
 
-interface FetchRegistrationErrorAction {
+export interface FetchRegistrationErrorAction {
   type: ErrorActionTypes.FETCH_REGISTRATION_ERROR;
   payload: string;
 }
 
-interface FetchLoginErrorAction {
+export interface FetchLoginErrorAction {
   type: ErrorActionTypes.FETCH_LOGIN_ERROR;
   payload: string;
 }

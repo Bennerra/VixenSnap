@@ -1,20 +1,20 @@
 export enum UploadActionTypes {
-  UPLOAD_FILE = "UPLOAD_FILE",
+  UPLOAD_FILES = "UPLOAD_FILES",
   DELETE_FILE = "DELETE_FILE",
 }
 
-interface UploadFileAction {
-  type: UploadActionTypes.UPLOAD_FILE;
-  payload: string;
+export interface UploadFileAction {
+  type: UploadActionTypes.UPLOAD_FILES;
+  payload: File[];
 }
 
-interface DeleteFileAction {
+export interface DeleteFileAction {
   type: UploadActionTypes.DELETE_FILE;
   payload: string;
 }
 
 export interface UploadState {
-  uploadedFiles: string[];
+  uploadedFiles: File[];
 }
 
 export type UploadAction = UploadFileAction | DeleteFileAction;

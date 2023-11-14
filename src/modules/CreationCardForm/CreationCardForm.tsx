@@ -3,15 +3,14 @@ import classNames from "classnames/bind";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { ThemeContext } from "@/context";
+import { ICreationCard } from "@/modules/CreationCardForm/models/ICreationCard";
+import { useAppDispatch, useAppSelector } from "@/hooks/redux";
+import { uploadFile } from "@/store/action-creators/uploadFiles";
 
 import { ReactComponent as Upload } from "@/assets/upload.svg";
 import { Input } from "@/ui/Input";
 import { Button } from "@/ui/Button";
-import { useAppDispatch, useAppSelector } from "@/hooks/redux";
-import { ReactComponent as Delete } from "@/assets/cross.svg";
-
-import { deleteFile, uploadFile } from "@/store/action-creators/uploadFiles";
-import { ICreationCard } from "@/modules/CreationCardForm/models/ICreationCard";
+import { ImagesPreview } from "@/modules/CreationCardForm/components/ImagesPreview";
 
 import styles from "./styles.module.scss";
 
@@ -24,18 +23,15 @@ const CreationCardForm: FC = () => {
   const files = useAppSelector((state) => state.files.uploadedFiles);
 
   const onSubmit: SubmitHandler<ICreationCard> = (data) => {
+    // eslint-disable-next-line no-console
     console.log(data);
   };
 
   const onImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files;
-    if (file) {
-      dispatch(uploadFile(URL.createObjectURL(file[0])));
+    if (e.target.files) {
+      const fileArr = Array.from(e.target.files);
+      dispatch(uploadFile(fileArr));
     }
-  };
-
-  const removeImage = (file: string) => {
-    dispatch(deleteFile(file));
   };
 
   return (
@@ -54,19 +50,7 @@ const CreationCardForm: FC = () => {
             onChange={onImageChange}
           />
         </div>
-        <div className={cx("creation-card__images", "images")}>
-          {files.map((file: string) => (
-            <div key={file} className={cx("images__item", "images-item")}>
-              <img className={cx("images-item__picture")} src={file} alt="" />
-              <div
-                onClick={() => removeImage(file)}
-                className={cx("images-item__close")}
-              >
-                <Delete />
-              </div>
-            </div>
-          ))}
-        </div>
+        <ImagesPreview files={files} />
       </div>
       <div className={cx("creation-card__description", "description")}>
         <form

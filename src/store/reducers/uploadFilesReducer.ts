@@ -13,16 +13,16 @@ export const uploadFilesReducer = (
   action: UploadAction
 ) => {
   switch (action.type) {
-    case UploadActionTypes.UPLOAD_FILE:
+    case UploadActionTypes.UPLOAD_FILES:
       return {
         ...state,
-        uploadedFiles: [...state.uploadedFiles, action.payload],
+        uploadedFiles: [...state.uploadedFiles, ...action.payload],
       };
     case UploadActionTypes.DELETE_FILE:
       return {
         ...state,
         uploadedFiles: state.uploadedFiles.filter(
-          (file) => file !== action.payload
+          (file) => file.name !== action.payload
         ),
       };
     default:

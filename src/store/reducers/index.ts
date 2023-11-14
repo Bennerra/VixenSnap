@@ -7,5 +7,3 @@ export const rootReducer = combineReducers({
   error: errorReducer,
   files: uploadFilesReducer,
 });
-
-export type RootState = ReturnType<typeof rootReducer>;

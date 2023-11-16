@@ -1,7 +1,6 @@
 import instance from "@/api/instance";
-import { ICreationCard } from "@/modules/CreationCardForm/models/ICreationCard";
 
-export const creationCard = async (data: ICreationCard) => {
+export const creationCard = async (data: FormData) => {
   await instance("/frames/", {
     method: "post",
     data,

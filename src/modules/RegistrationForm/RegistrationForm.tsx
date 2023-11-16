@@ -13,6 +13,8 @@ import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { ThemeContext } from "@/context";
 import { AuthButtonsList } from "@/modules/AuthButtonsList";
 
+import { getUserToken } from "@/utils/getUserToken";
+import { redirect } from "react-router-dom";
 import styles from "./styles.module.scss";
 
 const cx = classNames.bind(styles);
@@ -38,9 +40,14 @@ const RegistrationForm: FC = () => {
     resolver: yupResolver(schema) as any,
   });
   const { registrationError } = useAppSelector((state) => state.error);
+  const isAuth = useAppSelector((state) => state.isAuth.isAuth);
 
   const onSubmit: SubmitHandler<IRegistrationForm> = async (data) => {
     await registrationUser(data, dispatch);
+    await getUserToken(dispatch);
+    if (isAuth) {
+      redirect("/");
+    }
   };
 
   return (

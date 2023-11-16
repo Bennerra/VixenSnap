@@ -1,1 +1,1 @@
-export { default as CreationModal } from "./CreationCardForm";
+export { default as CreationCardForm } from "./CreationCardForm";

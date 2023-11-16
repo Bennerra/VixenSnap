@@ -1,8 +1,9 @@
 import { FC, ReactNode, useContext } from "react";
 import classNames from "classnames/bind";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 import { ThemeContext } from "@/context";
+import { useAppSelector } from "@/hooks/redux";
 
 import { ReactComponent as Logo } from "@/assets/logo-desktop.svg";
 
@@ -16,11 +17,13 @@ interface AuthorizationLayoutProps {
 
 const AuthorizationLayout: FC<AuthorizationLayoutProps> = ({ children }) => {
   const { theme } = useContext(ThemeContext);
+  const isAuth = useAppSelector((state) => state.isAuth.isAuth);
 
   return (
     <main
       className={cx("authorization-layout", `authorization-layout-${theme}`)}
     >
+      {isAuth && <Navigate to="/" replace />}
       <div className={cx("authorization-layout__container")}>
         <div
           className={cx(

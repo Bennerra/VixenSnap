@@ -8,11 +8,12 @@ const cx = classNames.bind(styles);
 
 interface AuthButtonsListProps {
   text: string;
+  onClick?: () => void;
 }
 
-const AuthButtonsList: FC<AuthButtonsListProps> = ({ text }) => {
+const AuthButtonsList: FC<AuthButtonsListProps> = ({ text, onClick }) => {
   return (
-    <div className={cx("button-list")}>
+    <div onClick={onClick} className={cx("button-list")}>
       <div className={cx("button-list__button", "button-list__button-mobile")}>
         <Button type="submit" text={text} color="orange" size="medium" />
       </div>

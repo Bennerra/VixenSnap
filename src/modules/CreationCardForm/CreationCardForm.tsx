@@ -24,11 +24,10 @@ const CreationCardForm: FC = () => {
   const files = useAppSelector((state) => state.files.uploadedFiles);
 
   const onSubmit: SubmitHandler<ICreationCard> = async (data) => {
-    const sendData = {
-      files: [["files", files[0]]],
-      name: data.name,
-      description: data.description,
-    };
+    const sendData = new FormData();
+    sendData.append("name", data.name);
+    sendData.append("description", data.description);
+    sendData.append("files", files[0]);
     await creationCard(sendData);
   };
 

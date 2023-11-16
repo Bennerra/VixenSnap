@@ -1,1 +1,1 @@
-export { default as ButtonsList } from "./ButtonsList";
+export { default as HeaderButtonsList } from "./ButtonsList";

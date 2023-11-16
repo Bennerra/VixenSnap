@@ -5,14 +5,13 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { ThemeContext } from "@/context";
+import { useAppDispatch, useAppSelector } from "@/hooks/redux";
+import { getUserToken } from "@/utils/getUserToken";
 
 import { Input } from "@/ui/Input";
-
 import { ILoginForm } from "@/modules/LoginForm/models/ILoginForm";
 import { loginUser } from "@/modules/LoginForm/login";
 import { AuthButtonsList } from "@/modules/AuthButtonsList";
-
-import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 
 import styles from "./styles.module.scss";
 
@@ -40,6 +39,7 @@ const LoginForm: FC = () => {
 
   const onSubmit: SubmitHandler<ILoginForm> = async (data) => {
     await loginUser(data, dispatch);
+    getUserToken(dispatch);
   };
 
   return (

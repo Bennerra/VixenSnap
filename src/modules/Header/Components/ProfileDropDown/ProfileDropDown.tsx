@@ -2,6 +2,8 @@ import { FC, useContext } from "react";
 import classNames from "classnames/bind";
 
 import { ThemeContext } from "@/context";
+import { deleteUserToken } from "@/utils/deleteUserToken";
+import { useAppDispatch } from "@/hooks/redux";
 
 import { ReactComponent as Profile } from "@/assets/profile.svg";
 import { ReactComponent as Theme } from "@/assets/theme.svg";
@@ -14,6 +16,11 @@ const cx = classNames.bind(styles);
 
 const ProfileDropDown: FC = () => {
   const { toggleTheme, theme } = useContext(ThemeContext);
+  const dispatch = useAppDispatch();
+
+  const deleteHandler = () => {
+    deleteUserToken(dispatch);
+  };
 
   return (
     <div className={cx("profile-dropdown", `profile-dropdown-${theme}`)}>
@@ -28,7 +35,11 @@ const ProfileDropDown: FC = () => {
           img={<Theme />}
           onClick={toggleTheme}
         />
-        <ProfileItem text="Выйти" img={<Exit />} />
+        <ProfileItem
+          onClick={() => deleteHandler()}
+          text="Выйти"
+          img={<Exit />}
+        />
       </ul>
     </div>
   );

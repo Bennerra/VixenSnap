@@ -11,6 +11,7 @@ import { useAppSelector } from "@/hooks/redux";
 import { ModalMenuLayout } from "@/layouts/ModalMenuLayout";
 import { IsAuthModalContent } from "@/modules/Header/Components/IsAuthModalContent";
 import { ModalContent } from "@/modules/Header/Components/ModalContent";
+import { OutsideClickHandler } from "@/modules/OutsideClickHandler";
 import { ProfileDropDown } from "./Components/ProfileDropDown";
 import { HeaderButtonsList } from "./Components/ButtonsList";
 import { HeaderLogo } from "./Components/HeaderLogo";
@@ -28,6 +29,10 @@ const Header: FC = () => {
 
   const toggleIsOpenProfile = () => {
     setIsOpenProfile(!isOpenProfile);
+  };
+
+  const closeIsOpenProfile = () => {
+    setIsOpenProfile(false);
   };
 
   const handleOpenMenu = () => {
@@ -79,19 +84,21 @@ const Header: FC = () => {
                 </ModalMenuLayout>
               </div>
             </div>
-            <div
-              onClick={toggleIsOpenProfile}
-              className={cx("header-information__profile", "header-profile")}
-            >
-              <ProfileImage />
+            <OutsideClickHandler onOutsideClick={closeIsOpenProfile}>
               <div
-                className={cx("header-profile__dropdown", {
-                  open: isOpenProfile,
-                })}
+                onClick={toggleIsOpenProfile}
+                className={cx("header-information__profile", "header-profile")}
               >
-                <ProfileDropDown />
+                <ProfileImage />
+                <div
+                  className={cx("header-profile__dropdown", {
+                    open: isOpenProfile,
+                  })}
+                >
+                  <ProfileDropDown />
+                </div>
               </div>
-            </div>
+            </OutsideClickHandler>
           </div>
         ) : (
           <div className={cx("header-information__burger", "header-burger")}>

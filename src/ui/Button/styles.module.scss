@@ -1,6 +1,7 @@
 @import "../../_variables";
 
 .button {
+  cursor: pointer;
   width: 100%;
   color: $color-white;
   font-weight: 400;
@@ -18,6 +19,22 @@
     transition: background-color 0.3s ease-in-out;
     &:hover {
       background-color: $color-orange-hover;
+    }
+  }
+  &__white {
+    color: $grey-umber;
+    background-color: $color-white;
+    transition: background-color 0.3s ease-in-out;
+    border: 1px solid $grey-umber;
+    &:hover {
+      background-color: $light-gray;
+    }
+    &-dark {
+      color: $color-white;
+      background-color: $wet-asphalt;
+      &:hover {
+        background-color: $color-gray-opacity;
+      }
     }
   }
   &__small {

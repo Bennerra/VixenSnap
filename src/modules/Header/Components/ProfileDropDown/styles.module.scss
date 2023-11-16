@@ -22,17 +22,8 @@
     flex-direction: column;
     gap: 15px;
     & > * {
-      cursor: pointer;
-      display: flex;
-      align-items: flex-start;
-      gap: 5px;
-      & svg {
-        width: 13px;
-        height: 13px;
-        object-fit: contain;
-      }
-      &:last-child {
-        margin-top: 18px;
+      &:nth-child(2) {
+        margin-bottom: 18px;
       }
     }
   }
@@ -52,13 +43,8 @@
     &__menu {
       gap: 21px;
       & > * {
-        gap: 7px;
-        & svg {
-          width: 17px;
-          height: 17px;
-        }
         &:last-child {
-          margin-top: 12px;
+          margin-top: 0;
         }
       }
     }

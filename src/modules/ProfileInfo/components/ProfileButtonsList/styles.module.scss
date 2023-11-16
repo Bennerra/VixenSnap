@@ -14,4 +14,9 @@
       width: 400px;
     }
   }
+  @media (min-width: $mw3) {
+    &__buttons {
+      width: 450px;
+    }
+  }
 }

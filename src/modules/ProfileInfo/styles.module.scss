@@ -40,4 +40,22 @@
     font-weight: 600;
     margin-bottom: 15px;
   }
+  @media (min-width: $mw3) {
+    margin-top: 50px;
+    &__img {
+      width: 80px;
+      height: 80px;
+      font-size: 34px;
+      margin-bottom: 15px;
+    }
+    &__name {
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+    &__description {
+      gap: 15px;
+      font-size: 15px;
+      margin-bottom: 15px;
+    }
+  }
 }

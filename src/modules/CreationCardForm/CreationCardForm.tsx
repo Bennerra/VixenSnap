@@ -6,6 +6,7 @@ import { ThemeContext } from "@/context";
 import { ICreationCard } from "@/modules/CreationCardForm/models/ICreationCard";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { uploadFile } from "@/store/action-creators/uploadFiles";
+import { creationCard } from "@/modules/CreationCardForm/creationCard";
 
 import { ReactComponent as Upload } from "@/assets/upload.svg";
 import { Input } from "@/ui/Input";
@@ -22,9 +23,13 @@ const CreationCardForm: FC = () => {
   const dispatch = useAppDispatch();
   const files = useAppSelector((state) => state.files.uploadedFiles);
 
-  const onSubmit: SubmitHandler<ICreationCard> = (data) => {
-    // eslint-disable-next-line no-console
-    console.log(data);
+  const onSubmit: SubmitHandler<ICreationCard> = async (data) => {
+    const sendData = {
+      files: [["files", files[0]]],
+      name: data.name,
+      description: data.description,
+    };
+    await creationCard(sendData);
   };
 
   const onImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -67,7 +72,7 @@ const CreationCardForm: FC = () => {
               Название
             </h2>
             <Input
-              {...register("title")}
+              {...register("name")}
               placeholder="Добавьте название"
               theme={theme}
             />

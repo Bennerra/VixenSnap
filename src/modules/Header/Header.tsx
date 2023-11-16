@@ -8,8 +8,10 @@ import { ProfileImage } from "@/ui/ProfileImage";
 import { ReactComponent as Burger } from "@/assets/burger.svg";
 import { ReactComponent as Notifications } from "@/assets/notifications.svg";
 import { useAppSelector } from "@/hooks/redux";
+import { ModalMenuLayout } from "@/layouts/ModalMenuLayout";
+import { IsAuthModalContent } from "@/modules/Header/Components/IsAuthModalContent";
+import { ModalContent } from "@/modules/Header/Components/ModalContent";
 import { ProfileDropDown } from "./Components/ProfileDropDown";
-import { ModalMenu } from "./Components/ModalMenu";
 import { HeaderButtonsList } from "./Components/ButtonsList";
 import { HeaderLogo } from "./Components/HeaderLogo";
 import { HeaderSearch } from "./Components/HeaderSearch";
@@ -51,7 +53,7 @@ const Header: FC = () => {
         <div className={cx("header__buttons-desktop")}>
           <HeaderButtonsList size="medium" />
         </div>
-        {isAuth && (
+        {isAuth ? (
           <div className={cx("header__information", "header-information")}>
             <div className={cx("header-information__notifications")}>
               <Notifications />
@@ -69,10 +71,12 @@ const Header: FC = () => {
                   open: isOpenMenu,
                 })}
               >
-                <ModalMenu
+                <ModalMenuLayout
                   isOpenMenu={isOpenMenu}
                   setIsOpenMenu={setIsOpenMenu}
-                />
+                >
+                  <IsAuthModalContent setIsOpenMenu={setIsOpenMenu} />
+                </ModalMenuLayout>
               </div>
             </div>
             <div
@@ -87,6 +91,25 @@ const Header: FC = () => {
               >
                 <ProfileDropDown />
               </div>
+            </div>
+          </div>
+        ) : (
+          <div className={cx("header-information__burger", "header-burger")}>
+            <div onClick={handleOpenMenu} className={cx("header-burger__open")}>
+              <Burger />
+            </div>
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className={cx("header-burger__menu", {
+                open: isOpenMenu,
+              })}
+            >
+              <ModalMenuLayout
+                isOpenMenu={isOpenMenu}
+                setIsOpenMenu={setIsOpenMenu}
+              >
+                <ModalContent setIsOpenMenu={setIsOpenMenu} />
+              </ModalMenuLayout>
             </div>
           </div>
         )}

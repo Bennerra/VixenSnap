@@ -27,14 +27,21 @@ const CreationCardForm: FC = () => {
     const sendData = new FormData();
     sendData.append("name", data.name);
     sendData.append("description", data.description);
-    sendData.append("files", files[0]);
+    files.forEach((el: File) => {
+      sendData.append("files", el);
+    });
     await creationCard(sendData);
   };
 
   const onImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      const fileArr = Array.from(e.target.files);
-      dispatch(uploadFile(fileArr));
+      const fileArr: File[] = Array.from(e.target.files);
+      const filterArr = fileArr.filter((file) => {
+        return !files.find((item) => item.name === file.name);
+      });
+      if (filterArr.length + files.length <= 15) {
+        dispatch(uploadFile(filterArr));
+      }
     }
   };
 

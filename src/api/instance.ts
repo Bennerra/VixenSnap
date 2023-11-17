@@ -5,9 +5,6 @@ const cookies = new Cookies();
 
 const instance = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
-  headers: {
-    "Content-Type": "application/json",
-  },
 });
 
 const onRequest = async (config: InternalAxiosRequestConfig) => {

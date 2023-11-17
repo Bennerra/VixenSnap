@@ -30,7 +30,13 @@ const ProfileInfo: FC<ProfileInfoProps> = ({
         {img ? <img src={img} alt="" /> : Array.from(name)[0]}
       </div>
       <div className={cx("profile-info__name")}>{name}</div>
-      <div className={cx("profile-info__description", "info-description")}>
+      <div
+        className={cx(
+          "profile-info__description",
+          `profile-info__description-${theme}`,
+          "info-description"
+        )}
+      >
         <div className={cx("info-description__subscribers")}>
           {subscribers} подписчиков
         </div>

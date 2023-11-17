@@ -13,7 +13,7 @@ import { IsAuthModalContent } from "@/modules/Header/Components/IsAuthModalConte
 import { ModalContent } from "@/modules/Header/Components/ModalContent";
 import { OutsideClickHandler } from "@/modules/OutsideClickHandler";
 import { ProfileDropDown } from "./Components/ProfileDropDown";
-import { HeaderButtonsList } from "./Components/ButtonsList";
+import { HeaderButtonsList } from "./Components/HeaderButtonsList";
 import { HeaderLogo } from "./Components/HeaderLogo";
 import { HeaderSearch } from "./Components/HeaderSearch";
 
@@ -53,10 +53,7 @@ const Header: FC = () => {
         </Link>
         <HeaderSearch />
         <div className={cx("header__buttons")}>
-          <HeaderButtonsList size="small" />
-        </div>
-        <div className={cx("header__buttons-desktop")}>
-          <HeaderButtonsList size="medium" />
+          <HeaderButtonsList />
         </div>
         {isAuth ? (
           <div className={cx("header__information", "header-information")}>

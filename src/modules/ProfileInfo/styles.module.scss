@@ -33,12 +33,21 @@
     margin-bottom: 5px;
   }
   &__description {
+    cursor: pointer;
     display: flex;
     align-items: center;
     gap: 10px;
     font-size: 14px;
     font-weight: 600;
     margin-bottom: 15px;
+    &-dark {
+      & > * {
+        transition: color 0.3s ease-in-out;
+        &:hover {
+          color: $light-gray-hover;
+        }
+      }
+    }
   }
   @media (min-width: $mw3) {
     margin-top: 50px;

@@ -34,29 +34,17 @@
   }
   &__buttons {
     display: none;
-    &-desktop {
-      display: none;
-    }
   }
   @media (min-width: $mw2) {
     &__buttons {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-left: 20px;
+      gap: 7px;
+      margin-left: 10px;
     }
   }
   @media (min-width: $mw3) {
     padding: 20px 0;
-    &__buttons {
-      display: none;
-      &-desktop {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-left: 30px;
-      }
-    }
     &__information {
       margin-left: 20px;
       gap: 13px;

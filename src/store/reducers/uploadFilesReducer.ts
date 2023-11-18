@@ -25,6 +25,8 @@ export const uploadFilesReducer = (
           (file) => file.name !== action.payload
         ),
       };
+    case UploadActionTypes.CLEAR_FILE_FORM:
+      return { ...state, uploadedFiles: [] };
     default:
       return state;
   }

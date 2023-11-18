@@ -106,3 +106,12 @@ code {
     padding: 0 123px;
   }
 }
+.loading {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: 50px;
+  color: $color-white;
+  font-size: 32px;
+  font-weight: 600;
+}

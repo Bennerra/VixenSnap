@@ -1,6 +1,6 @@
 import {
   IsAuthAction,
-  IsAuthActionPayloadTypes,
+  IsAuthActionTypes,
   IsAuthState,
 } from "@/store/types/isAuth";
 
@@ -10,7 +10,7 @@ const initialState: IsAuthState = {
 
 export const isAuthReducer = (state = initialState, action: IsAuthAction) => {
   switch (action.type) {
-    case IsAuthActionPayloadTypes.IS_AUTH:
+    case IsAuthActionTypes.IS_AUTH:
       return { ...state, isAuth: action.payload };
     default:
       return state;

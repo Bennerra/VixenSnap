@@ -1,9 +1,9 @@
-export enum IsAuthActionPayloadTypes {
+export enum IsAuthActionTypes {
   IS_AUTH = "IS_AUTH",
 }
 
 export interface SetIsAuthAction {
-  type: IsAuthActionPayloadTypes.IS_AUTH;
+  type: IsAuthActionTypes.IS_AUTH;
   payload: boolean;
 }
 

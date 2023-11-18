@@ -1,12 +1,13 @@
 import React, { FC, useContext } from "react";
 import classNames from "classnames/bind";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 import { ThemeContext } from "@/context";
-import { ICreationCard } from "@/modules/CreationCardForm/models/ICreationCard";
+import { ICreationCard } from "@/models/ICreationCard";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
-import { uploadFile } from "@/store/action-creators/uploadFiles";
-import { creationCard } from "@/modules/CreationCardForm/creationCard";
+import { clearFileForm, uploadFile } from "@/store/action-creators/uploadFiles";
+import { creationCard } from "@/api/creationCard";
 
 import { ReactComponent as Upload } from "@/assets/upload.svg";
 import { Input } from "@/ui/Input";
@@ -22,6 +23,7 @@ const CreationCardForm: FC = () => {
   const { handleSubmit, register } = useForm<ICreationCard>();
   const dispatch = useAppDispatch();
   const files = useAppSelector((state) => state.files.uploadedFiles);
+  const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<ICreationCard> = async (data) => {
     const sendData = new FormData();
@@ -31,6 +33,8 @@ const CreationCardForm: FC = () => {
       sendData.append("files", el);
     });
     await creationCard(sendData);
+    dispatch(clearFileForm());
+    navigate("/");
   };
 
   const onImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {

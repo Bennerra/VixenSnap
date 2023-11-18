@@ -5,16 +5,17 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import { Input } from "@/ui/Input";
-import { registrationUser } from "@/modules/RegistrationForm/registration";
+import { registrationUser } from "@/api/registration";
 
-import { IRegistrationForm } from "@/modules/RegistrationForm/models/IRegistrationForm";
+import { IRegistrationForm } from "@/models/IRegistrationForm";
 
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { ThemeContext } from "@/context";
-import { AuthButtonsList } from "@/modules/AuthButtonsList";
+import { loginUser } from "@/api/login";
 
+import { AuthButtonsList } from "@/modules/AuthButtonsList";
 import { getUserToken } from "@/utils/getUserToken";
-import { redirect } from "react-router-dom";
+
 import styles from "./styles.module.scss";
 
 const cx = classNames.bind(styles);
@@ -40,14 +41,14 @@ const RegistrationForm: FC = () => {
     resolver: yupResolver(schema) as any,
   });
   const { registrationError } = useAppSelector((state) => state.error);
-  const isAuth = useAppSelector((state) => state.isAuth.isAuth);
 
   const onSubmit: SubmitHandler<IRegistrationForm> = async (data) => {
     await registrationUser(data, dispatch);
+    await loginUser(
+      { login: data.username || data.email, password: data.password },
+      dispatch
+    );
     await getUserToken(dispatch);
-    if (isAuth) {
-      redirect("/");
-    }
   };
 
   return (

@@ -1,6 +1,7 @@
 export enum UploadActionTypes {
   UPLOAD_FILES = "UPLOAD_FILES",
   DELETE_FILE = "DELETE_FILE",
+  CLEAR_FILE_FORM = "CLEAR_FILE_FORM",
 }
 
 export interface UploadFileAction {
@@ -13,8 +14,12 @@ export interface DeleteFileAction {
   payload: string;
 }
 
+export interface ClearFileForm {
+  type: UploadActionTypes.CLEAR_FILE_FORM;
+}
+
 export interface UploadState {
   uploadedFiles: File[];
 }
 
-export type UploadAction = UploadFileAction | DeleteFileAction;
+export type UploadAction = UploadFileAction | DeleteFileAction | ClearFileForm;

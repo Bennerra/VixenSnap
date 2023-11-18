@@ -1,4 +1,4 @@
-import React, { FC, useContext } from "react";
+import { FC, useContext } from "react";
 import classNames from "classnames/bind";
 import * as yup from "yup";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -7,10 +7,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { ThemeContext } from "@/context";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { getUserToken } from "@/utils/getUserToken";
-
 import { Input } from "@/ui/Input";
-import { ILoginForm } from "@/modules/LoginForm/models/ILoginForm";
-import { loginUser } from "@/modules/LoginForm/login";
+import { ILoginForm } from "@/models/ILoginForm";
+import { loginUser } from "@/api/login";
+
 import { AuthButtonsList } from "@/modules/AuthButtonsList";
 
 import styles from "./styles.module.scss";

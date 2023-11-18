@@ -5,4 +5,6 @@ export type IGetCards = {
   short_url: string;
   description: string;
   preview: string;
+  likes: number;
+  is_liked: boolean;
 };

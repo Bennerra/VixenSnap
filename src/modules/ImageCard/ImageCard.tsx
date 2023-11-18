@@ -11,7 +11,7 @@ const cx = classNames.bind(styles);
 interface ImageCardProps {
   img: string;
   title: string;
-  likes?: string;
+  likes: number;
 }
 
 const ImageCard: FC<ImageCardProps> = ({ img, title, likes }) => {

@@ -127,7 +127,13 @@ const CreationCardForm: FC = () => {
             />
           </div>
           <div className={cx("description__button")}>
-            <Button type="submit" text="Создать" color="orange" size="medium" />
+            <Button
+              type="submit"
+              text="Создать"
+              color="orange"
+              size="medium"
+              theme={theme}
+            />
           </div>
         </form>
       </div>

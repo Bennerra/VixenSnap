@@ -10,6 +10,7 @@
   background-color: $wet-asphalt;
   min-height: 120px;
   break-inside: avoid;
+  overflow: hidden;
   &__image {
     width: 100%;
     min-height: 120px;
@@ -18,53 +19,47 @@
     object-fit: cover;
   }
   &__bottom {
-    transition: all 0.5s ease-in-out;
     position: absolute;
-    bottom: 0;
+    top: calc(100% - 33px);
     left: 0;
     width: 100%;
-    height: 33px;
+    height: 100%;
     border-radius: 0 0 7px 7px;
+    padding: 7px 10px;
+    color: $color-white;
     background: $color-gray-opacity;
+    font-size: 14px;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    transition: all 0.5s ease-in-out;
   }
   &:hover {
-    & .card__bottom {
-      padding: 10px;
-      height: 100%;
+    & .card-bottom {
+      top: 0;
       border-radius: 7px;
-    }
-    & .card-save {
-      display: flex;
     }
   }
   @media (min-width: $mw3) {
     &__bottom {
-      height: 43px;
-    }
-    &:hover {
-      & .card__bottom {
-        padding: 18px;
-      }
+      top: calc(100% - 43px);
     }
   }
 }
 .card-bottom {
-  padding: 7px 10px;
-  color: $color-white;
-  font-size: 14px;
-  font-weight: 400;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   &__description {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 5px;
   }
   &__title {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    line-height: 21px;
   }
   &__likes {
     display: flex;
@@ -83,13 +78,28 @@
 }
 .card-save {
   transition: all 0.5s ease-in-out;
-  display: none;
+  display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 5px;
   &__dropdown {
     display: flex;
     align-items: center;
     gap: 5px;
+  }
+  &__favourites {
+    width: 17px;
+    height: 17px;
+    & > * {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  @media (min-width: $mw3) {
+    &__favourites {
+      width: 25px;
+      height: 25px;
+    }
   }
 }
 .bottom-likes {
@@ -106,36 +116,6 @@
     &__image {
       width: 25px;
       height: 25px;
-    }
-  }
-}
-.save-dropdown {
-  &__arrow {
-    width: 10px;
-    height: 10px;
-    & > * {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-  &__favourites {
-    width: 17px;
-    height: 17px;
-    & > * {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-  &__favourites {
-    width: 25px;
-    height: 25px;
-  }
-  @media (min-width: $mw3) {
-    &__arrow {
-      width: 13px;
-      height: 13px;
     }
   }
 }

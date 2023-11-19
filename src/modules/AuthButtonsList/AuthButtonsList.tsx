@@ -1,9 +1,10 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import { Button } from "@/ui/Button";
 import classNames from "classnames/bind";
 
 import { useResize } from "@/hooks/useResize";
 
+import { ThemeContext } from "@/context";
 import styles from "./styles.module.scss";
 
 const cx = classNames.bind(styles);
@@ -14,6 +15,7 @@ interface AuthButtonsListProps {
 }
 
 const AuthButtonsList: FC<AuthButtonsListProps> = ({ text, onClick }) => {
+  const { theme } = useContext(ThemeContext);
   const { width } = useResize();
 
   return (
@@ -23,6 +25,7 @@ const AuthButtonsList: FC<AuthButtonsListProps> = ({ text, onClick }) => {
           type="submit"
           text={text}
           color="orange"
+          theme={theme}
           size={width < 768 ? "medium" : "big"}
         />
       </div>

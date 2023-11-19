@@ -29,11 +29,9 @@ const ImageCard: FC<ImageCardProps> = ({ img, title, likes }) => {
           </div>
         </div>
         <div className={cx("card-bottom__save", "card-save")}>
-          <div className={cx("card-save__dropdown", "save-dropdown")}>
-            Сохранить
-            <div className={cx("save-dropdown__favourites")}>
-              <Favourites />
-            </div>
+          Сохранить
+          <div className={cx("card-save__favourites")}>
+            <Favourites />
           </div>
         </div>
       </div>

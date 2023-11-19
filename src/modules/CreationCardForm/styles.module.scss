@@ -120,3 +120,9 @@
     }
   }
 }
+.description-form {
+  &__error {
+    margin-top: 5px;
+    color: $color-error;
+  }
+}

@@ -19,7 +19,7 @@ const Home: FC = () => {
 
   useEffect(() => {
     getCards(dispatch);
-  }, [dispatch]);
+  }, [dispatch, cards]);
 
   return (
     <main className={cx("home")}>

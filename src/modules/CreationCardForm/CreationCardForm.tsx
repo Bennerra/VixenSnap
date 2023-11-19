@@ -2,6 +2,8 @@ import React, { FC, useContext } from "react";
 import classNames from "classnames/bind";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 import { ThemeContext } from "@/context";
 import { ICreationCard } from "@/models/ICreationCard";
@@ -18,9 +20,19 @@ import styles from "./styles.module.scss";
 
 const cx = classNames.bind(styles);
 
+const schema = yup.object().shape({
+  name: yup.string().required(),
+});
+
 const CreationCardForm: FC = () => {
   const { theme } = useContext(ThemeContext);
-  const { handleSubmit, register } = useForm<ICreationCard>();
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm<ICreationCard>({
+    resolver: yupResolver(schema) as any,
+  });
   const dispatch = useAppDispatch();
   const files = useAppSelector((state) => state.files.uploadedFiles);
   const navigate = useNavigate();
@@ -63,6 +75,7 @@ const CreationCardForm: FC = () => {
             type="file"
             multiple
             onChange={onImageChange}
+            accept=".png, .jpg, .gif, .jpeg, .bmp, .webp, .svg"
           />
         </div>
         <ImagesPreview files={files} />
@@ -85,7 +98,13 @@ const CreationCardForm: FC = () => {
               {...register("name")}
               placeholder="Добавьте название"
               theme={theme}
+              error={errors?.name?.message}
             />
+            {errors?.name?.message && (
+              <div className={cx("description-form__error")}>
+                {errors?.name?.message}
+              </div>
+            )}
           </div>
           <div className={cx("description__item", "description-item")}>
             <h2

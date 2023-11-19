@@ -1,6 +1,7 @@
 import { FC, useContext, useEffect } from "react";
 import classNames from "classnames/bind";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { SkeletonTheme } from "react-loading-skeleton";
 
 import { ThemeContext } from "@/context";
 import { useAppDispatch } from "@/hooks/redux";
@@ -26,15 +27,17 @@ const App: FC = () => {
 
   return (
     <div className={cx("App", `App-${theme}`)}>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/creation" element={<CreationCard />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/registration" element={<Registration />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      </Router>
+      <SkeletonTheme baseColor="#5a5a5a" highlightColor="$grey-umber">
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/creation" element={<CreationCard />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/registration" element={<Registration />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </Router>
+      </SkeletonTheme>
     </div>
   );
 };

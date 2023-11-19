@@ -1,10 +1,13 @@
 import { FC, useEffect } from "react";
 import classNames from "classnames/bind";
+import { v4 as uuid4 } from "uuid";
 
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { getCards } from "@/api/getCards";
 import { IGetCards } from "@/models/IGetCards";
+import { SetIsLoading } from "@/store/action-creators/getCards";
 
+import { CardSkeleton } from "@/modules/CardsSkeleton";
 import { Header } from "@/modules/Header";
 import CardsLayout from "@/layouts/CardsLayout/CardsLayout";
 import { ImageCard } from "@/modules/ImageCard";
@@ -15,17 +18,21 @@ const cx = classNames.bind(styles);
 
 const Home: FC = () => {
   const dispatch = useAppDispatch();
-  const cards = useAppSelector((state) => state.cards.cards);
+  const { isLoading, cards } = useAppSelector((state) => state.cards);
+  const cardsCount = [...Array(10)];
 
   useEffect(() => {
+    dispatch(SetIsLoading(true));
     getCards(dispatch);
-  }, [dispatch, cards]);
+    dispatch(SetIsLoading(false));
+  }, [dispatch]);
 
   return (
     <main className={cx("home")}>
       <Header />
       <div className={cx("container")}>
         <CardsLayout>
+          {isLoading && cardsCount.map(() => <CardSkeleton key={uuid4()} />)}
           {cards.map((card: IGetCards) => (
             <ImageCard
               key={card.id}

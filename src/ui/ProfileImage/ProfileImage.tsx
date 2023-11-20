@@ -8,11 +8,11 @@ import styles from "./styles.module.scss";
 const cx = classNames.bind(styles);
 
 interface ProfileImageProps {
-  img?: string;
-  letter?: string;
+  img: string | null | undefined;
+  name: string;
 }
 
-const ProfileImage: FC<ProfileImageProps> = ({ img, letter = "A" }) => {
+const ProfileImage: FC<ProfileImageProps> = ({ img, name }) => {
   const { theme } = useContext(ThemeContext);
 
   return (
@@ -26,7 +26,7 @@ const ProfileImage: FC<ProfileImageProps> = ({ img, letter = "A" }) => {
             `profile-image__empty-${theme}`
           )}
         >
-          {letter}
+          {Array.from(name)[0]}
         </div>
       )}
     </div>

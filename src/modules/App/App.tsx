@@ -12,7 +12,9 @@ import { Login } from "@/pages/Login";
 import { CreationCard } from "@/pages/CreationCard";
 import { Profile } from "@/pages/Profile";
 
+import { getUser } from "@/api/user";
 import { getUserToken } from "@/utils/getUserToken";
+
 import styles from "./styles.module.scss";
 
 const cx = classNames.bind(styles);
@@ -23,6 +25,7 @@ const App: FC = () => {
 
   useEffect(() => {
     getUserToken(dispatch);
+    getUser(dispatch);
   }, [dispatch]);
 
   return (

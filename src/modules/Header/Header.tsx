@@ -26,6 +26,7 @@ const Header: FC = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const isAuth = useAppSelector((state) => state.isAuth.isAuth);
   const { theme } = useContext(ThemeContext);
+  const { avatar, name } = useAppSelector((state) => state.user.userInfo);
 
   const toggleIsOpenProfile = () => {
     setIsOpenProfile(!isOpenProfile);
@@ -86,7 +87,7 @@ const Header: FC = () => {
                 onClick={toggleIsOpenProfile}
                 className={cx("header-information__profile", "header-profile")}
               >
-                <ProfileImage />
+                <ProfileImage name={name} img={avatar} />
                 <div
                   className={cx("header-profile__dropdown", {
                     open: isOpenProfile,

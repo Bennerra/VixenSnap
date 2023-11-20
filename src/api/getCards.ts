@@ -9,7 +9,7 @@ import { AppDispatch } from "@/store";
 export const getCards = async (page: number, dispatch: AppDispatch) => {
   await instance("/frames/", {
     method: "get",
-    params: { page },
+    params: { page, count: 25 },
   })
     .then((response) => {
       dispatch(SetCards(response.data.results));

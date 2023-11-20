@@ -1,7 +1,8 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { CardSkeleton } from "@/modules/CardsSkeleton";
 import { v4 as uuid4 } from "uuid";
+import { Link } from "react-router-dom";
 
 import { IGetCards } from "@/models/IGetCards";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
@@ -16,19 +17,9 @@ const CardsInfiniteScroll: FC = () => {
   const { cards, page, totalCount } = useAppSelector((state) => state.cards);
   const cardsCount = [...Array(10)];
 
-  useEffect(() => {
-    dispatch(SetIsLoading(true));
-    getCards(page, dispatch);
-    dispatch(SetIsLoading(false));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   const fetchMoreCards = () => {
     dispatch(SetIsLoading(true));
     getCards(page, dispatch);
-    if (totalCount === 0) {
-      dispatch(SetIsLoading(false));
-    }
     dispatch(SetIsLoading(false));
   };
 
@@ -47,12 +38,14 @@ const CardsInfiniteScroll: FC = () => {
     >
       <CardsLayout>
         {cards.map((card: IGetCards) => (
-          <ImageCard
-            key={uuid4()}
-            img={`http://s3.darklorian.ru/frames/${card.preview}`}
-            title={card.name}
-            likes={card.likes}
-          />
+          <Link to={`/card/:id${card.id}`}>
+            <ImageCard
+              key={uuid4()}
+              img={`http://s3.darklorian.ru/frames/${card.preview}`}
+              title={card.name}
+              likes={card.likes}
+            />
+          </Link>
         ))}
       </CardsLayout>
     </InfiniteScroll>

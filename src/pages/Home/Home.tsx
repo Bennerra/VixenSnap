@@ -2,7 +2,7 @@ import { FC } from "react";
 import classNames from "classnames/bind";
 
 import { Header } from "@/modules/Header";
-import CardsInfiniteScroll from "@/modules/CardsInfiniteScroll/CardsInfiniteScroll";
+import { CardsInfiniteScroll } from "@/modules/CardsInfiniteScroll";
 
 import styles from "./styles.module.scss";
 

@@ -5,6 +5,7 @@ import { uploadFilesReducer } from "@/store/reducers/uploadFilesReducer";
 import { isAuthReducer } from "@/store/reducers/isAuthReducer";
 import { getCardsReducer } from "@/store/reducers/getCardsReducer";
 import { userReducer } from "@/store/reducers/getUserReducer";
+import { getCardReducer } from "@/store/reducers/getCardReducer";
 
 export const rootReducer = combineReducers({
   error: errorReducer,
@@ -12,4 +13,5 @@ export const rootReducer = combineReducers({
   isAuth: isAuthReducer,
   cards: getCardsReducer,
   user: userReducer,
+  card: getCardReducer,
 });

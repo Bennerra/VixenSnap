@@ -3,6 +3,7 @@ import {
   SetCardsAction,
   SetErrorAction,
   SetIsLoadingAction,
+  SetTotalCountAction,
 } from "@/store/types/getCards";
 import { IGetCards } from "@/models/IGetCards";
 
@@ -16,4 +17,8 @@ export const SetCards = (cards: IGetCards[]): SetCardsAction => {
 
 export const SetError = (error: string): SetErrorAction => {
   return { type: GetCardsActionTypes.SET_ERROR, payload: error };
+};
+
+export const SetTotalCount = (totalCount: number): SetTotalCountAction => {
+  return { type: GetCardsActionTypes.SET_TOTAL_COUNT, payload: totalCount };
 };

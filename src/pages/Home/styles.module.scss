@@ -2,4 +2,12 @@
 
 .home {
   min-height: 100vh;
+  &__cards-list {
+    padding: 30px 0;
+  }
+  @media (min-width: $mw3) {
+    &__cards-list {
+      padding: 50px 0;
+    }
+  }
 }

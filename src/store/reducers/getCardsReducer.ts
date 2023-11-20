@@ -8,6 +8,8 @@ const initialState: GetCardsState = {
   isLoading: false,
   cards: [],
   error: "",
+  page: 1,
+  totalCount: 0,
 };
 
 export const getCardsReducer = (
@@ -18,9 +20,16 @@ export const getCardsReducer = (
     case GetCardsActionTypes.SET_IS_LOADING:
       return { ...state, isLoading: true };
     case GetCardsActionTypes.SET_CARDS:
-      return { ...state, isLoading: false, cards: action.payload };
+      return {
+        ...state,
+        isLoading: false,
+        cards: [...state.cards, ...action.payload],
+        page: state.page + 1,
+      };
     case GetCardsActionTypes.SET_ERROR:
       return { ...state, isLoading: false, error: action.payload };
+    case GetCardsActionTypes.SET_TOTAL_COUNT:
+      return { ...state, totalCount: action.payload };
     default:
       return state;
   }

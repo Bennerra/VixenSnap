@@ -1,1 +1,1 @@
-export { default as GridLayout } from "./CardsLayout";
+export { default as CardsLayout } from "./CardsLayout";

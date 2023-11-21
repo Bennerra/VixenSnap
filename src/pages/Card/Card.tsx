@@ -4,9 +4,11 @@ import { useParams } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { getCard } from "@/api/getCard";
+import { SetIsLoading } from "@/store/action-creators/getCard";
 
 import { CardInfo } from "@/modules/CardInfo";
 import { Header } from "@/modules/Header";
+import { CardSkeleton } from "@/modules/CardSkeleton";
 
 import styles from "./styles.module.scss";
 
@@ -14,11 +16,13 @@ const cx = classNames.bind(styles);
 
 const Card: FC = () => {
   const dispatch = useAppDispatch();
-  const card = useAppSelector((state) => state.card.card);
+  const { card, isLoading } = useAppSelector((state) => state.card);
   const { id } = useParams();
 
   useEffect(() => {
-    getCard(id?.slice(3, id?.length), dispatch);
+    dispatch(SetIsLoading(true));
+    getCard(id, dispatch);
+    dispatch(SetIsLoading(false));
   }, [dispatch, id]);
 
   return (
@@ -26,13 +30,17 @@ const Card: FC = () => {
       <Header />
       <div className={cx("container")}>
         <div className={cx("card__content")}>
-          <CardInfo
-            img={`http://s3.darklorian.ru/frames/${card.attachments[0].url}`}
-            name="Попа - мы её увидели"
-            title={card.name}
-            description={card.description}
-            likes={card.likes}
-          />
+          {isLoading ? (
+            <CardSkeleton />
+          ) : (
+            <CardInfo
+              img={`http://s3.darklorian.ru/frames/${card.attachments[0].url}`}
+              name="Попа - мы её увидели"
+              title={card.name}
+              description={card.description}
+              likes={card.likes}
+            />
+          )}
         </div>
       </div>
     </div>

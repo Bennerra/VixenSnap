@@ -1,6 +1,5 @@
 import { FC } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { CardSkeleton } from "@/modules/CardsSkeleton";
 import { v4 as uuid4 } from "uuid";
 import { Link } from "react-router-dom";
 
@@ -10,12 +9,12 @@ import { getCards } from "@/api/getCards";
 import { SetIsLoading } from "@/store/action-creators/getCards";
 
 import { ImageCard } from "@/modules/ImageCard";
-import CardsLayout from "@/layouts/CardsLayout/CardsLayout";
+import { Loader } from "@/modules/Loader";
+import { CardsLayout } from "@/layouts/CardsLayout";
 
 const CardsInfiniteScroll: FC = () => {
   const dispatch = useAppDispatch();
   const { cards, page, totalCount } = useAppSelector((state) => state.cards);
-  const cardsCount = [...Array(10)];
 
   const fetchMoreCards = () => {
     dispatch(SetIsLoading(true));
@@ -27,18 +26,12 @@ const CardsInfiniteScroll: FC = () => {
     <InfiniteScroll
       next={fetchMoreCards}
       hasMore={totalCount > 0}
-      loader={
-        <CardsLayout>
-          {cardsCount.map(() => (
-            <CardSkeleton key={uuid4()} />
-          ))}
-        </CardsLayout>
-      }
+      loader={<Loader />}
       dataLength={cards.length}
     >
       <CardsLayout>
         {cards.map((card: IGetCards) => (
-          <Link to={`/card/:id${card.id}`}>
+          <Link to={`/card/${card.id}`}>
             <ImageCard
               key={uuid4()}
               img={`http://s3.darklorian.ru/frames/${card.preview}`}

@@ -15,12 +15,18 @@ const initialState: CardState = {
     is_liked: false,
     attachments: [],
   },
+  isLoading: false,
+  error: "",
 };
 
 export const getCardReducer = (state = initialState, action: CardAction) => {
   switch (action.type) {
     case GetCardActionTypes.GET_CARD:
-      return { ...state, card: action.payload };
+      return { ...state, card: action.payload, isLoading: false };
+    case GetCardActionTypes.IS_LOADING_CARD:
+      return { ...state, isLoading: true };
+    case GetCardActionTypes.GET_ERROR:
+      return { ...state, error: action.payload };
     default:
       return { ...state };
   }

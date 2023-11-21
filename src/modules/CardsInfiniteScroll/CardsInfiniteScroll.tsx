@@ -4,8 +4,7 @@ import { v4 as uuid4 } from "uuid";
 
 import { IGetCards } from "@/models/IGetCards";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
-import { getCards } from "@/api/getCards";
-import { SetIsLoading } from "@/store/action-creators/getCards";
+import { setCards, setIsLoading } from "@/store/action-creators/getCards";
 
 import { ImageCard } from "@/modules/ImageCard";
 import { Loader } from "@/modules/Loader";
@@ -16,9 +15,9 @@ const CardsInfiniteScroll: FC = () => {
   const { cards, page, totalCount } = useAppSelector((state) => state.cards);
 
   const fetchMoreCards = () => {
-    dispatch(SetIsLoading(true));
-    getCards(page, dispatch);
-    dispatch(SetIsLoading(false));
+    dispatch(setIsLoading(true));
+    dispatch(setCards(page) as any);
+    dispatch(setIsLoading(false));
   };
 
   return (

@@ -4,17 +4,14 @@ import classNames from "classnames/bind";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import { Input } from "@/ui/Input";
-import { registrationUser } from "@/api/registration";
-
+import { loginUser, registrationUser } from "@/store/action-creators/auth";
 import { IRegistrationForm } from "@/models/IRegistrationForm";
-
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { ThemeContext } from "@/context";
-import { loginUser } from "@/api/login";
-
 import { AuthButtonsList } from "@/modules/AuthButtonsList";
 import { getUserToken } from "@/utils/getUserToken";
+
+import { Input } from "@/ui/Input";
 
 import styles from "./styles.module.scss";
 
@@ -43,10 +40,12 @@ const RegistrationForm: FC = () => {
   const { registrationError } = useAppSelector((state) => state.error);
 
   const onSubmit: SubmitHandler<IRegistrationForm> = async (data) => {
-    await registrationUser(data, dispatch);
-    await loginUser(
-      { login: data.username || data.email, password: data.password },
-      dispatch
+    await dispatch(registrationUser(data) as any);
+    await dispatch(
+      loginUser({
+        login: data.username || data.email,
+        password: data.password,
+      }) as any
     );
     await getUserToken(dispatch);
   };

@@ -3,10 +3,10 @@ import classNames from "classnames/bind";
 
 import { ThemeContext } from "@/context";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
+import { setUserMeInfo } from "@/store/action-creators/user";
 
 import { ProfileButtonsList } from "@/modules/ProfileInfo/components/ProfileButtonsList";
 
-import { getUserMe } from "@/api/userMe";
 import styles from "./styles.module.scss";
 
 const cx = classNames.bind(styles);
@@ -25,7 +25,7 @@ const ProfileInfo: FC<ProfileInfoProps> = ({
   const { avatar, name } = useAppSelector((state) => state.user.userMeInfo);
 
   useEffect(() => {
-    getUserMe(dispatch);
+    dispatch(setUserMeInfo() as any);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

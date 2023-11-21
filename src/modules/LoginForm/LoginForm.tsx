@@ -4,12 +4,12 @@ import * as yup from "yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
+import { loginUser } from "@/store/action-creators/auth";
 import { ThemeContext } from "@/context";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { getUserToken } from "@/utils/getUserToken";
 import { Input } from "@/ui/Input";
 import { ILoginForm } from "@/models/ILoginForm";
-import { loginUser } from "@/api/login";
 
 import { AuthButtonsList } from "@/modules/AuthButtonsList";
 
@@ -38,7 +38,7 @@ const LoginForm: FC = () => {
   const { loginError } = useAppSelector((state) => state.error);
 
   const onSubmit: SubmitHandler<ILoginForm> = async (data) => {
-    await loginUser(data, dispatch);
+    await dispatch(loginUser(data) as any);
     getUserToken(dispatch);
   };
 

@@ -6,11 +6,11 @@ import { ThemeContext } from "@/context";
 
 import { useAppDispatch } from "@/hooks/redux";
 import { setUserCardInfo } from "@/store/action-creators/user";
+import { setLike } from "@/api/like";
 
 import { ReactComponent as Like } from "@/assets/likes-filled.svg";
 import { ReactComponent as EmptyLike } from "@/assets/empty-like.svg";
 
-import { setLike } from "@/api/like";
 import styles from "./styles.module.scss";
 
 const cx = classNames.bind(styles);
@@ -42,7 +42,7 @@ const CardInfo: FC<CardInfoProps> = ({
   const [countLike, setCountLike] = useState(0);
 
   useEffect(() => {
-    dispatch(setUserCardInfo(owner_id));
+    dispatch(setUserCardInfo(owner_id) as any);
     setIsLike(is_liked);
     setCountLike(likes);
     // eslint-disable-next-line react-hooks/exhaustive-deps

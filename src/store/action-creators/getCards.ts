@@ -1,24 +1,38 @@
 import {
   GetCardsActionTypes,
-  SetCardsAction,
-  SetErrorAction,
   SetIsLoadingAction,
-  SetTotalCountAction,
 } from "@/store/types/getCards";
-import { IGetCards } from "@/models/IGetCards";
+import { ThunkAction } from "redux-thunk";
+import { AppDispatch, RootState } from "@/store";
+import { SetUserCardAction } from "@/store/types/user";
+import instance from "@/api/instance";
 
-export const SetIsLoading = (isLoading: boolean): SetIsLoadingAction => {
+export const setIsLoading = (isLoading: boolean): SetIsLoadingAction => {
   return { type: GetCardsActionTypes.SET_IS_LOADING, payload: isLoading };
 };
 
-export const SetCards = (cards: IGetCards[]): SetCardsAction => {
-  return { type: GetCardsActionTypes.SET_CARDS, payload: cards };
-};
-
-export const SetError = (error: string): SetErrorAction => {
-  return { type: GetCardsActionTypes.SET_ERROR, payload: error };
-};
-
-export const SetTotalCount = (totalCount: number): SetTotalCountAction => {
-  return { type: GetCardsActionTypes.SET_TOTAL_COUNT, payload: totalCount };
+export const setCards = (
+  page: number
+): ThunkAction<void, RootState, unknown, SetUserCardAction> => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      const response = await instance("/frames/", {
+        method: "get",
+        params: { page, count: 25 },
+      });
+      dispatch({
+        type: GetCardsActionTypes.SET_CARDS,
+        payload: response.data.results,
+      });
+      dispatch({
+        type: GetCardsActionTypes.SET_TOTAL_COUNT,
+        payload: response.data.total,
+      });
+    } catch (e: any) {
+      dispatch({
+        type: GetCardsActionTypes.SET_ERROR,
+        payload: e.message,
+      });
+    }
+  };
 };

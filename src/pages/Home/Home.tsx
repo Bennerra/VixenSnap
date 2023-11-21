@@ -1,11 +1,10 @@
 import { FC, useEffect } from "react";
 import classNames from "classnames/bind";
 
-import { SetIsLoading } from "@/store/action-creators/getCards";
-import { getCards } from "@/api/getCards";
+import { setCards, setIsLoading } from "@/store/action-creators/getCards";
 import { getUserToken } from "@/utils/getUserToken";
-import { getUserMe } from "@/api/userMe";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
+import { setUserMeInfo } from "@/store/action-creators/user";
 
 import { Header } from "@/modules/Header";
 import { CardsInfiniteScroll } from "@/modules/CardsInfiniteScroll";
@@ -19,11 +18,11 @@ const Home: FC = () => {
   const page = useAppSelector((state) => state.cards.page);
 
   useEffect(() => {
-    dispatch(SetIsLoading(true));
-    getCards(page, dispatch);
-    dispatch(SetIsLoading(false));
+    dispatch(setIsLoading(true));
+    dispatch(setCards(page) as any);
+    dispatch(setIsLoading(false));
     getUserToken(dispatch);
-    getUserMe(dispatch);
+    dispatch(setUserMeInfo() as any);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

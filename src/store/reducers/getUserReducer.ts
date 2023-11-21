@@ -19,7 +19,10 @@ const initialState: UserState = {
   },
 };
 
-export const userReducer = (state = initialState, action: UserAction) => {
+export const userReducer = (
+  state = initialState,
+  action: UserAction
+): UserState => {
   switch (action.type) {
     case UserActionTypes.SET_USER_ME_INFO:
       return { ...state, userMeInfo: action.payload };

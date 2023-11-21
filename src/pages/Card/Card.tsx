@@ -3,8 +3,7 @@ import classNames from "classnames/bind";
 import { useParams } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
-import { getCard } from "@/api/getCard";
-import { SetIsLoading } from "@/store/action-creators/getCard";
+import { getCard, setIsLoading } from "@/store/action-creators/getCard";
 
 import { CardInfo } from "@/modules/CardInfo";
 import { Header } from "@/modules/Header";
@@ -21,9 +20,9 @@ const Card: FC = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    dispatch(SetIsLoading(true));
-    getCard(id, dispatch);
-    dispatch(SetIsLoading(false));
+    dispatch(setIsLoading(true));
+    dispatch(getCard(id) as any);
+    dispatch(setIsLoading(false));
   }, [dispatch, id]);
 
   return (

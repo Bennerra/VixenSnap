@@ -11,6 +11,7 @@ import { SetIsLoading } from "@/store/action-creators/getCards";
 import { ImageCard } from "@/modules/ImageCard";
 import { Loader } from "@/modules/Loader";
 import { CardsLayout } from "@/layouts/CardsLayout";
+import { setLike } from "@/api/like";
 
 const CardsInfiniteScroll: FC = () => {
   const dispatch = useAppDispatch();
@@ -33,6 +34,8 @@ const CardsInfiniteScroll: FC = () => {
         {cards.map((card: IGetCards) => (
           <Link to={`/card/${card.id}`}>
             <ImageCard
+              onClick={() => setLike(card.id)}
+              is_liked={card.is_liked}
               key={uuid4()}
               img={`http://s3.darklorian.ru/frames/${card.preview}`}
               title={card.name}

@@ -1,7 +1,8 @@
 import { FC } from "react";
 import classNames from "classnames/bind";
 
-import { ReactComponent as Likes } from "@/assets/likes-filled.svg";
+import { ReactComponent as Like } from "@/assets/likes-filled.svg";
+import { ReactComponent as EmptyLike } from "@/assets/empty-like.svg";
 import { ReactComponent as Favourites } from "@/assets/favourites.svg";
 
 import styles from "./styles.module.scss";
@@ -12,18 +13,26 @@ interface ImageCardProps {
   img: string;
   title: string;
   likes: number;
+  is_liked: boolean;
+  onClick: () => void;
 }
 
-const ImageCard: FC<ImageCardProps> = ({ img, title, likes }) => {
+const ImageCard: FC<ImageCardProps> = ({
+  img,
+  title,
+  likes,
+  is_liked,
+  onClick,
+}) => {
   return (
-    <div className={cx("card")}>
+    <div onClick={onClick} className={cx("card")}>
       <img alt="" src={img} className={cx("card__image")} />
       <div className={cx("card__bottom", "card-bottom")}>
         <div className={cx("card-bottom__description")}>
           <span className={cx("card-bottom__title")}>{title}</span>
           <div className={cx("card-bottom__likes", "bottom-likes")}>
             <div className={cx("bottom-likes__image")}>
-              <Likes />
+              {is_liked ? <Like /> : <EmptyLike />}
             </div>
             {likes}
           </div>

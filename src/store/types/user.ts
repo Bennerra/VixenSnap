@@ -1,16 +1,23 @@
 import { IUser } from "@/models/IUser";
 
 export enum UserActionTypes {
-  SET_USER_INFO = "SET_USER_INFO",
+  SET_USER_ME_INFO = "SET_USER_ME_INFO",
+  SET_USER_CARD_INFO = "SET_USER_CARD_INFO",
 }
 
-export interface SetUserAction {
-  type: UserActionTypes.SET_USER_INFO;
+export interface SetUserMeAction {
+  type: UserActionTypes.SET_USER_ME_INFO;
+  payload: IUser;
+}
+
+export interface SetUserCardAction {
+  type: UserActionTypes.SET_USER_CARD_INFO;
   payload: IUser;
 }
 
 export interface UserState {
-  userInfo: IUser;
+  userMeInfo: IUser;
+  userCardInfo: IUser;
 }
 
-export type UserAction = SetUserAction;
+export type UserAction = SetUserMeAction | SetUserCardAction;

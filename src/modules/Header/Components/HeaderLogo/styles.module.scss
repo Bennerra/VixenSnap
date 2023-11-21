@@ -1,7 +1,11 @@
 @import "../../../../variables";
 
 .header-logo {
+  color: $wet-asphalt;
   cursor: pointer;
+  &-dark {
+    color: $light-gray;
+  }
   &__desktop {
     display: none;
   }

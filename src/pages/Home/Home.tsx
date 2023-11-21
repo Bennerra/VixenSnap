@@ -4,7 +4,7 @@ import classNames from "classnames/bind";
 import { SetIsLoading } from "@/store/action-creators/getCards";
 import { getCards } from "@/api/getCards";
 import { getUserToken } from "@/utils/getUserToken";
-import { getUser } from "@/api/user";
+import { getUserMe } from "@/api/userMe";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 
 import { Header } from "@/modules/Header";
@@ -23,7 +23,7 @@ const Home: FC = () => {
     getCards(page, dispatch);
     dispatch(SetIsLoading(false));
     getUserToken(dispatch);
-    getUser(dispatch);
+    getUserMe(dispatch);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

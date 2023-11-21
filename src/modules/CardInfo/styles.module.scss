@@ -35,8 +35,8 @@
     padding: 15px 15px 30px 15px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     min-height: 250px;
+    gap: 30px;
   }
   @media (min-width: $mw1) {
     &__container {
@@ -54,8 +54,8 @@
       padding: 30px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       min-height: 250px;
+      gap: 50px;
     }
   }
   @media (min-width: $mw2) {

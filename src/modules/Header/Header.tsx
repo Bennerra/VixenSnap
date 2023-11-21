@@ -1,6 +1,6 @@
 import React, { FC, useContext, useState } from "react";
 import classNames from "classnames/bind";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { ThemeContext } from "@/context";
 
@@ -26,7 +26,8 @@ const Header: FC = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const isAuth = useAppSelector((state) => state.isAuth.isAuth);
   const { theme } = useContext(ThemeContext);
-  const { avatar, name } = useAppSelector((state) => state.user.userInfo);
+  const { avatar, name } = useAppSelector((state) => state.user.userMeInfo);
+  const navigate = useNavigate();
 
   const toggleIsOpenProfile = () => {
     setIsOpenProfile(!isOpenProfile);
@@ -49,9 +50,11 @@ const Header: FC = () => {
           `header__container-${theme}`
         )}
       >
-        <Link to="/">
-          <HeaderLogo />
-        </Link>
+        <div onClick={() => navigate(0)}>
+          <Link to="/">
+            <HeaderLogo />
+          </Link>
+        </div>
         <HeaderSearch />
         <div className={cx("header__buttons")}>
           <HeaderButtonsList />

@@ -1,12 +1,10 @@
 import instance from "@/api/instance";
-import { AppDispatch } from "@/store";
-import { setUserInfo } from "@/store/action-creators/user";
 
-export const getUser = async (dispatch: AppDispatch) => {
-  await instance("/users/me", {
+export const getUser = async (id: string) => {
+  await instance(`/users/${id}`, {
     method: "get",
   })
-    .then((response) => dispatch(setUserInfo(response.data)))
+    .then((response) => console.log(response.data))
     .catch((e) => {
       // eslint-disable-next-line no-console
       console.log(e.message);

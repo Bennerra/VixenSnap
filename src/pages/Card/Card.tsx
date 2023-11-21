@@ -17,6 +17,7 @@ const cx = classNames.bind(styles);
 const Card: FC = () => {
   const dispatch = useAppDispatch();
   const { card, isLoading } = useAppSelector((state) => state.card);
+  const userCard = useAppSelector((state) => state.user.userCardInfo);
   const { id } = useParams();
 
   useEffect(() => {
@@ -30,15 +31,18 @@ const Card: FC = () => {
       <Header />
       <div className={cx("container")}>
         <div className={cx("card__content")}>
-          {isLoading ? (
+          {isLoading || !card.id ? (
             <CardSkeleton />
           ) : (
             <CardInfo
               img={`http://s3.darklorian.ru/frames/${card.attachments[0].url}`}
-              name="Попа - мы её увидели"
+              name={userCard.name}
               title={card.name}
               description={card.description}
               likes={card.likes}
+              is_liked={card.is_liked}
+              id={card.id}
+              owner_id={card.owner_id}
             />
           )}
         </div>

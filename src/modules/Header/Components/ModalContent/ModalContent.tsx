@@ -1,5 +1,5 @@
 import { Dispatch, FC, SetStateAction, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import classNames from "classnames/bind";
 
 import { ThemeContext } from "@/context";
@@ -14,17 +14,21 @@ const cx = classNames.bind(styles);
 
 const ModalContent: FC<ModalProps> = ({ setIsOpenMenu }) => {
   const { theme } = useContext(ThemeContext);
+  const navigate = useNavigate();
+
   const handleCloseMenu = () => {
     setIsOpenMenu(false);
   };
 
   return (
     <ul className={cx("menu-list", `menu-list-${theme}`)}>
-      <Link to="/">
-        <li onClick={handleCloseMenu} className={cx("menu-list__item")}>
-          Главная
-        </li>
-      </Link>
+      <div onClick={() => navigate(0)}>
+        <Link to="/">
+          <li onClick={handleCloseMenu} className={cx("menu-list__item")}>
+            Главная
+          </li>
+        </Link>
+      </div>
       <Link to="/registration">
         <li onClick={handleCloseMenu} className={cx("menu-list__item")}>
           Зарегистрироваться

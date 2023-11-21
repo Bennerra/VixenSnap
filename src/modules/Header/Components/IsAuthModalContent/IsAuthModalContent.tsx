@@ -1,6 +1,6 @@
 import { Dispatch, FC, SetStateAction, useContext } from "react";
 import classNames from "classnames/bind";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { ThemeContext } from "@/context";
 
@@ -14,6 +14,8 @@ const cx = classNames.bind(styles);
 
 const IsAuthModalContent: FC<IsAuthModalProps> = ({ setIsOpenMenu }) => {
   const { theme } = useContext(ThemeContext);
+  const navigate = useNavigate();
+
   const handleCloseMenu = () => {
     setIsOpenMenu(false);
   };
@@ -23,11 +25,13 @@ const IsAuthModalContent: FC<IsAuthModalProps> = ({ setIsOpenMenu }) => {
       <li onClick={handleCloseMenu} className={cx("menu-list__item")}>
         Уведомления
       </li>
-      <Link to="/">
-        <li onClick={handleCloseMenu} className={cx("menu-list__item")}>
-          Главная
-        </li>
-      </Link>
+      <div onClick={() => navigate(0)}>
+        <Link to="/">
+          <li onClick={handleCloseMenu} className={cx("menu-list__item")}>
+            Главная
+          </li>
+        </Link>
+      </div>
       <Link to="/creation">
         <li onClick={handleCloseMenu} className={cx("menu-list__item")}>
           Добавить

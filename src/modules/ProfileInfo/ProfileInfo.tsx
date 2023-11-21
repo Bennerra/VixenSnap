@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 
 import { ProfileButtonsList } from "@/modules/ProfileInfo/components/ProfileButtonsList";
 
-import { getUser } from "@/api/user";
+import { getUserMe } from "@/api/userMe";
 import styles from "./styles.module.scss";
 
 const cx = classNames.bind(styles);
@@ -22,10 +22,10 @@ const ProfileInfo: FC<ProfileInfoProps> = ({
 }) => {
   const dispatch = useAppDispatch();
   const { theme } = useContext(ThemeContext);
-  const { avatar, name } = useAppSelector((state) => state.user.userInfo);
+  const { avatar, name } = useAppSelector((state) => state.user.userMeInfo);
 
   useEffect(() => {
-    getUser(dispatch);
+    getUserMe(dispatch);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

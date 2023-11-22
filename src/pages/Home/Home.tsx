@@ -32,15 +32,11 @@ const Home: FC = () => {
     <main className={cx("home")}>
       <Header />
       <div className={cx("container")}>
-        {cards.length === 0 && (
+        <div className={cx("home__cards-list")}>
+          {isLoading ? <Loader /> : <CardsInfiniteScroll />}
+        </div>
+        {cards.length === 0 && !isLoading && (
           <div className={cx("home__not-found")}>Карточки не найдены!</div>
-        )}
-        {isLoading ? (
-          <Loader />
-        ) : (
-          <div className={cx("home__cards-list")}>
-            <CardsInfiniteScroll />
-          </div>
         )}
       </div>
     </main>

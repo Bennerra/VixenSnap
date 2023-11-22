@@ -8,9 +8,9 @@ import { loginUser } from "@/store/action-creators/auth";
 import { ThemeContext } from "@/context";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { getUserToken } from "@/utils/getUserToken";
-import { Input } from "@/ui/Input";
 import { ILoginForm } from "@/models/ILoginForm";
 
+import { Input } from "@/ui/Input";
 import { AuthButtonsList } from "@/modules/AuthButtonsList";
 
 import styles from "./styles.module.scss";
@@ -74,7 +74,7 @@ const LoginForm: FC = () => {
         )}
       </div>
       {loginError && (
-        <div className={cx("login-form__error")}>{loginError}</div>
+        <div className={cx("login-form__error")}>Неверный логин или пароль</div>
       )}
       <AuthButtonsList text="Войти" />
     </form>

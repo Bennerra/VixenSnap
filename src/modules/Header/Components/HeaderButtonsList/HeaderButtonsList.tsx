@@ -2,11 +2,12 @@ import { FC, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import classNames from "classnames/bind";
 
-import { Button } from "@/ui/Button";
 import { useAppSelector } from "@/hooks/redux";
+import { ThemeContext } from "@/context";
 import { useResize } from "@/hooks/useResize";
 
-import { ThemeContext } from "@/context";
+import { Button } from "@/ui/Button";
+
 import styles from "./styles.module.scss";
 
 const cx = classNames.bind(styles);

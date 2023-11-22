@@ -3,11 +3,11 @@ import classNames from "classnames/bind";
 import { Link, useNavigate } from "react-router-dom";
 
 import { ThemeContext } from "@/context";
+import { useAppSelector } from "@/hooks/redux";
 
 import { ProfileImage } from "@/ui/ProfileImage";
 import { ReactComponent as Burger } from "@/assets/burger.svg";
 import { ReactComponent as Notifications } from "@/assets/notifications.svg";
-import { useAppSelector } from "@/hooks/redux";
 import { ModalMenuLayout } from "@/layouts/ModalMenuLayout";
 import { IsAuthModalContent } from "@/modules/Header/Components/IsAuthModalContent";
 import { ModalContent } from "@/modules/Header/Components/ModalContent";
@@ -90,7 +90,7 @@ const Header: FC = () => {
                 onClick={toggleIsOpenProfile}
                 className={cx("header-information__profile", "header-profile")}
               >
-                <ProfileImage name={name} img={avatar} />
+                <ProfileImage theme={theme} name={name} img={avatar} />
                 <div
                   className={cx("header-profile__dropdown", {
                     open: isOpenProfile,

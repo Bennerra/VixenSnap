@@ -1,4 +1,4 @@
-import React, { FC, ReactComponentElement, useContext } from "react";
+import { FC, ReactComponentElement, useContext } from "react";
 import { Link } from "react-router-dom";
 import classNames from "classnames/bind";
 
@@ -6,13 +6,13 @@ import { ThemeContext } from "@/context";
 
 import styles from "./styles.module.scss";
 
+const cx = classNames.bind(styles);
+
 interface ProfileItemProps {
   img?: ReactComponentElement<any>;
   text: string;
   onClick?: () => void;
 }
-
-const cx = classNames.bind(styles);
 
 const ProfileItem: FC<ProfileItemProps> = ({ img, text, onClick }) => {
   const { theme } = useContext(ThemeContext);

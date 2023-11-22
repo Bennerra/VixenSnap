@@ -6,11 +6,11 @@ import { ThemeContext } from "@/context";
 
 import styles from "./styles.module.scss";
 
+const cx = classNames.bind(styles);
+
 interface ModalProps {
   setIsOpenMenu: Dispatch<SetStateAction<boolean>>;
 }
-
-const cx = classNames.bind(styles);
 
 const ModalContent: FC<ModalProps> = ({ setIsOpenMenu }) => {
   const { theme } = useContext(ThemeContext);

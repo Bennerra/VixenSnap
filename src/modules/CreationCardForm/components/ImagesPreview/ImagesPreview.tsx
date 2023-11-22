@@ -1,18 +1,18 @@
 import { FC } from "react";
 import classNames from "classnames/bind";
 
-import { ReactComponent as Delete } from "@/assets/cross.svg";
-
 import { deleteFile } from "@/store/action-creators/uploadFiles";
 import { useAppDispatch } from "@/hooks/redux";
 
+import { ReactComponent as Delete } from "@/assets/cross.svg";
+
 import styles from "./styles.module.scss";
+
+const cx = classNames.bind(styles);
 
 interface ImagesPreviewProps {
   files: File[];
 }
-
-const cx = classNames.bind(styles);
 
 const ImagesPreview: FC<ImagesPreviewProps> = ({ files }) => {
   const dispatch = useAppDispatch();

@@ -1,13 +1,12 @@
 import { FC, useContext, useEffect, useState } from "react";
 import classNames from "classnames/bind";
 
-import { Button } from "@/ui/Button";
 import { ThemeContext } from "@/context";
-
 import { useAppDispatch } from "@/hooks/redux";
 import { setUserCardInfo } from "@/store/action-creators/user";
 import { setLike } from "@/api/like";
 
+import { Button } from "@/ui/Button";
 import { ReactComponent as Like } from "@/assets/likes-filled.svg";
 import { ReactComponent as EmptyLike } from "@/assets/empty-like.svg";
 

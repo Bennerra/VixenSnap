@@ -1,8 +1,0 @@
-@import "../../_variables";
-
-.card-skeleton {
-  height: 250px;
-  @media (min-width: $mw2) {
-    height: 450px;
-  }
-}

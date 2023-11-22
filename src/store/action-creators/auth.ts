@@ -1,7 +1,7 @@
 import { ErrorActionTypes } from "@/store/types/error";
 import { ThunkAction } from "redux-thunk";
 import { AppDispatch, RootState } from "@/store";
-import { SetUserCardAction, UserActionTypes } from "@/store/types/user";
+import { SetUserCardAction } from "@/store/types/user";
 import instance from "@/api/instance";
 import { ILoginForm } from "@/models/ILoginForm";
 import { IRegistrationForm } from "@/models/IRegistrationForm";
@@ -11,13 +11,13 @@ export const registrationUser = (
 ): ThunkAction<void, RootState, unknown, SetUserCardAction> => {
   return async (dispatch: AppDispatch) => {
     try {
-      await instance("/token/", {
+      await instance("/token/create/", {
         method: "post",
         data,
       });
     } catch (e: any) {
       dispatch({
-        type: UserActionTypes.SET_USER_CARD_INFO,
+        type: ErrorActionTypes.FETCH_REGISTRATION_ERROR,
         payload: e.message,
       });
     }

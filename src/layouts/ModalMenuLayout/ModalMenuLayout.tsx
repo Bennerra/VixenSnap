@@ -7,13 +7,13 @@ import { ReactComponent as Close } from "@/assets/close.svg";
 
 import styles from "./styles.module.scss";
 
+const cx = classNames.bind(styles);
+
 interface ModalMenuProps {
   isOpenMenu: boolean;
   setIsOpenMenu: Dispatch<SetStateAction<boolean>>;
   children: ReactNode | ReactNode[];
 }
-
-const cx = classNames.bind(styles);
 
 const ModalMenuLayout: FC<ModalMenuProps> = ({
   isOpenMenu = false,

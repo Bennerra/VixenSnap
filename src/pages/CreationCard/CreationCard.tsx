@@ -21,10 +21,17 @@ const CreationCard: FC = () => {
       {!isAuth && <Navigate to="/" replace />}
       <Header />
       <div className={cx("container")}>
-        <h1 className={cx("creation__title", `creation__title-${theme}`)}>
-          Создание новой карточки
-        </h1>
-        <CreationCardForm />
+        <div className={cx("creation__content", "creation-content")}>
+          <h1
+            className={cx(
+              "creation-content__title",
+              `creation-content__title-${theme}`
+            )}
+          >
+            Создание новой карточки
+          </h1>
+          <CreationCardForm />
+        </div>
       </div>
     </main>
   );

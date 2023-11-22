@@ -1,7 +1,5 @@
-import React, { FC, useContext } from "react";
+import { FC } from "react";
 import classNames from "classnames/bind";
-
-import { ThemeContext } from "@/context";
 
 import styles from "./styles.module.scss";
 
@@ -10,11 +8,10 @@ const cx = classNames.bind(styles);
 interface ProfileImageProps {
   img: string | null | undefined;
   name: string;
+  theme: string;
 }
 
-const ProfileImage: FC<ProfileImageProps> = ({ img, name }) => {
-  const { theme } = useContext(ThemeContext);
-
+const ProfileImage: FC<ProfileImageProps> = ({ img, name, theme }) => {
   return (
     <div className={cx("profile-image")}>
       {img ? (

@@ -6,6 +6,7 @@ import { getUserToken } from "@/utils/getUserToken";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { setUserMeInfo } from "@/store/action-creators/user";
 
+import { Loader } from "@/ui/Loader";
 import { Header } from "@/modules/Header";
 import { CardsInfiniteScroll } from "@/modules/CardsInfiniteScroll";
 
@@ -15,7 +16,8 @@ const cx = classNames.bind(styles);
 
 const Home: FC = () => {
   const dispatch = useAppDispatch();
-  const page = useAppSelector((state) => state.cards.page);
+  const { cards, page } = useAppSelector((state) => state.cards);
+  const isLoading = useAppSelector((state) => state.cards.isLoading);
 
   useEffect(() => {
     dispatch(setIsLoading(true));
@@ -30,9 +32,16 @@ const Home: FC = () => {
     <main className={cx("home")}>
       <Header />
       <div className={cx("container")}>
-        <div className={cx("home__cards-list")}>
-          <CardsInfiniteScroll />
-        </div>
+        {cards.length === 0 && (
+          <div className={cx("home__not-found")}>Карточки не найдены!</div>
+        )}
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <div className={cx("home__cards-list")}>
+            <CardsInfiniteScroll />
+          </div>
+        )}
       </div>
     </main>
   );

@@ -1,5 +1,6 @@
 import {
   GetCardsActionTypes,
+  ResetCardsAction,
   SetIsLoadingAction,
 } from "@/store/types/getCards";
 import { ThunkAction } from "redux-thunk";
@@ -35,4 +36,33 @@ export const setCards = (
       });
     }
   };
+};
+
+export const filterCards = (
+  value: string
+): ThunkAction<void, RootState, unknown, SetUserCardAction> => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      const response = await instance(`/frames/?name_startswith=${value}`, {
+        method: "get",
+        params: { count: 25 },
+      });
+      dispatch({
+        type: GetCardsActionTypes.FILTER_CARDS,
+        payload: {
+          cards: response.data.results,
+          totalCount: response.data.total,
+        },
+      });
+    } catch (e: any) {
+      dispatch({
+        type: GetCardsActionTypes.SET_ERROR,
+        payload: e.message,
+      });
+    }
+  };
+};
+
+export const resetCards = (): ResetCardsAction => {
+  return { type: GetCardsActionTypes.RESET_CARDS };
 };

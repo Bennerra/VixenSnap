@@ -20,7 +20,7 @@ const CardSkeleton: FC = () => {
         backgroundColor={theme === "light" ? "#f3f3f3" : "#5a5a5a"}
         foregroundColor={theme === "light" ? "#ecebeb" : "#535353"}
       >
-        <rect x="0" y="0" rx="0" ry="0" width="100%" height="100%" />
+        <rect x="0" y="0" rx="30" ry="30" width="100%" height="100%" />
       </ContentLoader>
     </div>
   );

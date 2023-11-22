@@ -6,6 +6,7 @@ import { isAuthReducer } from "@/store/reducers/isAuthReducer";
 import { getCardsReducer } from "@/store/reducers/getCardsReducer";
 import { userReducer } from "@/store/reducers/getUserReducer";
 import { getCardReducer } from "@/store/reducers/getCardReducer";
+import { getSearchValueReducer } from "@/store/reducers/getSearchValueReducer";
 
 export const rootReducer = combineReducers({
   error: errorReducer,
@@ -14,4 +15,5 @@ export const rootReducer = combineReducers({
   cards: getCardsReducer,
   user: userReducer,
   card: getCardReducer,
+  searchValue: getSearchValueReducer,
 });

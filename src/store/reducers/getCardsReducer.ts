@@ -30,6 +30,14 @@ export const getCardsReducer = (
       return { ...state, isLoading: false, error: action.payload };
     case GetCardsActionTypes.SET_TOTAL_COUNT:
       return { ...state, totalCount: action.payload };
+    case GetCardsActionTypes.FILTER_CARDS:
+      return {
+        ...state,
+        cards: action.payload.cards,
+        totalCount: action.payload.totalCount,
+      };
+    case GetCardsActionTypes.RESET_CARDS:
+      return { ...state, cards: [], page: 0 };
     default:
       return state;
   }

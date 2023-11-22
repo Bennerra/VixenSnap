@@ -5,6 +5,8 @@ export enum GetCardsActionTypes {
   SET_CARDS = "SET_CARDS",
   SET_ERROR = "SET_ERROR",
   SET_TOTAL_COUNT = "SET_TOTAL_COUNT",
+  FILTER_CARDS = "FILTER_CARDS",
+  RESET_CARDS = "RESET_CARDS",
 }
 
 export interface SetIsLoadingAction {
@@ -26,6 +28,15 @@ export interface SetTotalCountAction {
   payload: number;
 }
 
+export interface FilterCardsAction {
+  type: GetCardsActionTypes.FILTER_CARDS;
+  payload: { cards: IGetCards[]; totalCount: number };
+}
+
+export interface ResetCardsAction {
+  type: GetCardsActionTypes.RESET_CARDS;
+}
+
 export interface GetCardsState {
   isLoading: boolean;
   cards: IGetCards[];
@@ -38,4 +49,6 @@ export type GetCardsAction =
   | SetIsLoadingAction
   | SetCardsAction
   | SetErrorAction
-  | SetTotalCountAction;
+  | SetTotalCountAction
+  | FilterCardsAction
+  | ResetCardsAction;

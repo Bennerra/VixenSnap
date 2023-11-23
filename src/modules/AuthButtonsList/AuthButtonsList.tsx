@@ -12,15 +12,14 @@ const cx = classNames.bind(styles);
 
 interface AuthButtonsListProps {
   text: string;
-  onClick?: () => void;
 }
 
-const AuthButtonsList: FC<AuthButtonsListProps> = ({ text, onClick }) => {
+const AuthButtonsList: FC<AuthButtonsListProps> = ({ text }) => {
   const { theme } = useContext(ThemeContext);
   const { width } = useResize();
 
   return (
-    <div onClick={onClick} className={cx("button-list")}>
+    <div className={cx("button-list")}>
       <div className={cx("button-list__button", "button-list__button-mobile")}>
         <Button
           type="submit"

@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { ThemeContext } from "@/context";
 
 import { ReactComponent as VK } from "@/assets/vk.svg";
-
 import styles from "./styles.module.scss";
 
 const cx = classNames.bind(styles);
@@ -27,9 +26,6 @@ const Authorization: FC<PropsWithChildren<AuthorizationProps>> = ({
   children,
 }) => {
   const { theme } = useContext(ThemeContext);
-  // const url = window.location.hash;
-  // const regex = /access_token=([a-z0-9.A-Z_\-\]?@';:]+)/;
-  // const token = regex.exec(url);
 
   return (
     <div className={cx("authorization", `authorization-${theme}`)}>
@@ -39,7 +35,7 @@ const Authorization: FC<PropsWithChildren<AuthorizationProps>> = ({
         {title}
       </h1>
       <a
-        href={`${oauthUrl}?client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}`}
+        href={`${oauthUrl}?client_id=${clientId}&scope=offline,email&response_type=token&redirect_uri=${redirectUri}`}
       >
         <div
           className={cx(

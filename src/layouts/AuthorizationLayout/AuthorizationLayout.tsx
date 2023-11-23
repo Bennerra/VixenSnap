@@ -23,7 +23,7 @@ const AuthorizationLayout: FC<AuthorizationLayoutProps> = ({ children }) => {
     <main
       className={cx("authorization-layout", `authorization-layout-${theme}`)}
     >
-      {isAuth && <Navigate to="/" replace />}
+      {isAuth && <Navigate to="/" />}
       <div className={cx("authorization-layout__container")}>
         <div
           className={cx(

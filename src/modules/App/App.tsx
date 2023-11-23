@@ -10,6 +10,7 @@ import { Login } from "@/pages/Login";
 import { CreationCard } from "@/pages/CreationCard";
 import { Profile } from "@/pages/Profile";
 import { Card } from "@/pages/Card";
+import { OAuth } from "@/modules/OAuth";
 
 import styles from "./styles.module.scss";
 
@@ -28,6 +29,7 @@ const App: FC = () => {
           <Route path="/card/:id" element={<Card />} />
           <Route path="/registration" element={<Registration />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/vk_auth" element={<OAuth />} />
         </Routes>
       </Router>
     </div>

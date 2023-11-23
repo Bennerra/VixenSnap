@@ -1,4 +1,4 @@
-import { ErrorActionTypes } from "@/store/types/error";
+import { ErrorActionTypes } from "@/store/types/auth";
 import { ThunkAction } from "redux-thunk";
 import { AppDispatch, RootState } from "@/store";
 import { SetUserCardAction } from "@/store/types/user";

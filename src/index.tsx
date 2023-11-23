@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 
 import { store } from "@/store";
 import { ThemeProvider } from "@/context";
@@ -15,7 +16,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <ThemeProvider>
     <Provider store={store}>
-      <App />
+      <BrowserRouter basename={`/${process.env.REACT_APP_PUBLIC_URL}`}>
+        <App />
+      </BrowserRouter>
     </Provider>
   </ThemeProvider>
 );

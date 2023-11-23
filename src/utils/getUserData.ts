@@ -14,7 +14,6 @@ export const getUserData = (url: string) => {
       // eslint-disable-next-line prefer-destructuring
       userData.email = match[2];
     }
-    console.log(match);
   }
   return userData;
 };

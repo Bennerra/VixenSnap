@@ -2,7 +2,7 @@
   "homepage": "https://bennerra.github.io/VixenSnap",
   "name": "vixen_snap",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",
     "@testing-library/jest-dom": "^5.17.0",

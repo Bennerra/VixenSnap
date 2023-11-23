@@ -1,0 +1,21 @@
+@import "../../../../_variables";
+
+.menu-list {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  & > * {
+    cursor: pointer;
+    & > * {
+      color: $color-white;
+    }
+  }
+  &-dark {
+    & > * {
+      & > * {
+        color: $light-gray;
+      }
+    }
+  }
+}

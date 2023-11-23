@@ -1,0 +1,10 @@
+@import "../../../../_variables";
+
+.button {
+  @media (min-width: $mw2) {
+    width: 87px;
+  }
+  @media (min-width: $mw3) {
+    width: 120px;
+  }
+}

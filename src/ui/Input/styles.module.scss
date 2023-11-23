@@ -1,0 +1,28 @@
+@import "../../_variables";
+
+.input {
+  width: 100%;
+  border-radius: 11px;
+  border: 2px solid $light-gray;
+  background: $color-white;
+  font-weight: 400;
+  color: $grey-umber;
+  padding: 6px 10px;
+  font-size: 12px;
+  transition: all 0.3s ease-in-out;
+  &-dark {
+    border-color: $wet-asphalt;
+    background: $grey-umber;
+    color: $light-gray;
+  }
+  &.error {
+    border-color: $color-error;
+  }
+  &.cancelled {
+    border-color: $color-error;
+  }
+  @media (min-width: $mw2) {
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+}

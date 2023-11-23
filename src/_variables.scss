@@ -4,19 +4,30 @@ $font-roboto: "Roboto", sans-serif;
 
 //Colors
 
+$color-white: #fff;
 $color-orange: #f06b31;
+$color-orange-hover: #da622f;
 $color-red: #ea2a2a;
 $desert-sand: #eebca7;
 $crayola: #db9577;
 $yellow-orange: #f8aa35;
 $byzantine: #b73cba;
 $grey-umber: #2c2c2c;
-$wet-asphalt: 5a5a5a;
+$wet-asphalt: #5a5a5a;
+$wet-asphalt-hover: #535353;
 $light-gray: #d0d0d0;
+$light-gray-hover: #ababab;
+$color-error: #c82a2a;
+$color-delete: #b90000;
+$color-bg-auth: #eebca7;
+$color-gray-opacity: rgba(54, 54, 54, 0.57);
+$color-modal-opacity: rgba(0, 0, 0, 0.70);
 
 //Breakpoints
 
 $min-width: 320px;
+$mw1: 576px;
 $mw2: 768px;
-$mw3: 1024px;
-$mw4: 1366px;
+$mw3: 992px;
+$mw4: 1200px;
+$mw5: 1600px;

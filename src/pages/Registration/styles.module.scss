@@ -1,0 +1,25 @@
+@import "../../_variables";
+
+.registration {
+  &__form {
+    padding-top: 40px;
+    position: relative;
+    z-index: 5;
+  }
+  @media (min-width: $mw2) {
+    &__form {
+      margin: 0 auto;
+      width: 90%;
+    }
+  }
+  @media (min-width: $mw4) {
+    &__form {
+      width: 70%;
+    }
+  }
+  @media (min-width: $mw5) {
+    &__form {
+      width: 50%;
+    }
+  }
+}

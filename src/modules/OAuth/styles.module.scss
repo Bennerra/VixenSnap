@@ -1,0 +1,15 @@
+@import "../../_variables";
+
+.oauth {
+  padding-top: 100px;
+  min-height: 100vh;
+  &__title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 500;
+    color: $grey-umber;
+    &-dark {
+      color: $light-gray;
+    }
+  }
+}

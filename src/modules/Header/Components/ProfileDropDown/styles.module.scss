@@ -1,0 +1,55 @@
+@import "../../../../_variables";
+
+.profile-dropdown {
+  z-index: 5;
+  position: relative;
+  width: 200px;
+  border-radius: 11px;
+  border: 1px solid $light-gray;
+  background: $color-white;
+  padding: 23px 20px 10px 20px;
+  color: $wet-asphalt;
+  font-size: 12px;
+  font-weight: 400;
+  transition: all 0.3s ease-in-out;
+  &-dark {
+    border-color: $wet-asphalt;
+    background: $grey-umber;
+    color: $color-white;
+  }
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    & > * {
+      &:nth-child(2) {
+        margin-bottom: 18px;
+      }
+    }
+  }
+  &::after {
+    content: "";
+    background-color: $light-gray;
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 35px;
+    left: 0;
+  }
+  @media (min-width: $mw3) {
+    padding: 28px 25px 15px 25px;
+    font-size: 15px;
+    width: 217px;
+    &__menu {
+      gap: 21px;
+      & > * {
+        &:last-child {
+          margin-top: 0;
+        }
+      }
+    }
+    &::after {
+      bottom: 45px;
+    }
+  }
+}

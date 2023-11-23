@@ -1,0 +1,33 @@
+@import "../../../../variables";
+
+.header-logo {
+  color: $wet-asphalt;
+  cursor: pointer;
+  &-dark {
+    color: $light-gray;
+  }
+  &__desktop {
+    display: none;
+  }
+  &__mobile {
+    & > * {
+      width: 37px;
+      height: 25px;
+      object-fit: cover;
+    }
+  }
+  @media (min-width: $mw3) {
+    &__mobile {
+      display: none;
+    }
+    &__desktop {
+      display: block;
+      margin-right: 10px;
+      & > * {
+        width: 220px;
+        height: 50px;
+        object-fit: cover;
+      }
+    }
+  }
+}

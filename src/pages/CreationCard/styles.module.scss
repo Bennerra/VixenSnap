@@ -1,0 +1,30 @@
+@import "../../_variables";
+
+.creation {
+  min-height: 100vh;
+  &__content {
+    padding: 30px 0;
+  }
+  @media (min-width: $mw1) {
+    &__content {
+      padding: 50px 0;
+    }
+  }
+}
+.creation-content {
+  &__title {
+    color: $grey-umber;
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    &-dark {
+      color: $light-gray;
+    }
+  }
+  @media (min-width: $mw1) {
+    &__title {
+      font-size: 28px;
+      margin-bottom: 40px;
+    }
+  }
+}

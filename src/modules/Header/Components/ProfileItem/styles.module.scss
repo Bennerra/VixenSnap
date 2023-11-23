@@ -1,0 +1,24 @@
+@import "../../../../_variables";
+
+.profile-item {
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+  color: $wet-asphalt;
+  &-dark {
+    color: $color-white;
+  }
+  & svg {
+    width: 13px;
+    height: 13px;
+    object-fit: contain;
+  }
+  @media (min-width: $mw3) {
+    gap: 7px;
+    & svg {
+      width: 17px;
+      height: 17px;
+    }
+  }
+}

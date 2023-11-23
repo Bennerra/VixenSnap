@@ -23,7 +23,7 @@ const App: FC = () => {
     <div className={cx("App", `App-${theme}`)}>
       <Router>
         <Routes>
-          <Route path="/VixenSnap" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/creation" element={<CreationCard />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/card/:id" element={<Card />} />

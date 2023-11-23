@@ -31,7 +31,7 @@ yarn dev
 
 Теперь вы можете редактировать `src/index.tsx` (При изменении любого из `src/*` файла, страница будет перезагружаться автоматически)
 
-Для доступа к API был использован общедоступный сервис - [API](http://backend.darklorian.ru/api/v1/).
+Для доступа к API был использован общедоступный сервис - [API](http://backend.darklorian.ru/api/v1/). 
 Хэндлеры для взаимодействия, и API instance хранится в директории
 `api/*`
 
@@ -44,3 +44,4 @@ npm run build
 
 #### Development by
 Elgina Anastasia - [@bennerra](https://t.me/bennerra)
+

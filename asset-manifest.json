@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/VixenSnap/static/css/main.272c1b30.css",
-    "main.js": "/VixenSnap/static/js/main.ef07af35.js",
+    "main.js": "/VixenSnap/static/js/main.6f61655f.js",
     "static/media/logo-desktop.svg": "/VixenSnap/static/media/logo-desktop.f8ec9ab791a61802c974f95aeeeb29f4.svg",
     "static/media/theme.svg": "/VixenSnap/static/media/theme.1b953f7a0a67d96248e36660928c40db.svg",
     "static/media/logo.svg": "/VixenSnap/static/media/logo.a0a44bacc9f6b2b929c04db467818647.svg",
@@ -19,10 +19,10 @@
     "static/media/likes-filled.svg": "/VixenSnap/static/media/likes-filled.7cdeb113ffbcb7170f4e89bf2acb1ba6.svg",
     "static/media/favourites.svg": "/VixenSnap/static/media/favourites.833729bacc47e04f822baf115ff25762.svg",
     "main.272c1b30.css.map": "/VixenSnap/static/css/main.272c1b30.css.map",
-    "main.ef07af35.js.map": "/VixenSnap/static/js/main.ef07af35.js.map"
+    "main.6f61655f.js.map": "/VixenSnap/static/js/main.6f61655f.js.map"
   },
   "entrypoints": [
     "static/css/main.272c1b30.css",
-    "static/js/main.ef07af35.js"
+    "static/js/main.6f61655f.js"
   ]
 }

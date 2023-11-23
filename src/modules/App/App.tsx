@@ -1,6 +1,6 @@
 import { FC, useContext } from "react";
 import classNames from "classnames/bind";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import { ThemeContext } from "@/context";
 
@@ -21,17 +21,15 @@ const App: FC = () => {
 
   return (
     <div className={cx("App", `App-${theme}`)}>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/creation" element={<CreationCard />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/card/:id" element={<Card />} />
-          <Route path="/registration" element={<Registration />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/vk_auth" element={<OAuth />} />
-        </Routes>
-      </Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/creation" element={<CreationCard />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/card/:id" element={<Card />} />
+        <Route path="/registration" element={<Registration />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/vk_auth" element={<OAuth />} />
+      </Routes>
     </div>
   );
 };

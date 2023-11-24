@@ -4,7 +4,7 @@
 VixenSnap - фотохостинг, поддерживающий такие форматы как .png, .jpg, .gif, .jpeg, .bmp, .webp, .svg. Реализована загрузка фотографий, mansonry-галлерея, бесконечная лента, лайки на постах, отдельные страницы с описанием каждой карточки, поиск, авторизация, oAuth, смена темы, skeleton loading
 
 #### Live Demo
-Готовое и активное демо: [VixenSnap](http://bennerra.github.io/vixensnap/)
+Готовое и активное демо: [VixenSnap]([http://bennerra.github.io/vixensnap/](http://bennerra.darklorian.ru/))
 #### Technologies
 - React
 - Redux
